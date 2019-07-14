@@ -26,7 +26,6 @@ class BootstrapElementsCollapsible extends HTMLElement {
         this.update();
     }
     update() {
-        console.log(this.show);
          $(this).collapse(this.show === 'true' ? 'show' : 'hide');
     }
 }

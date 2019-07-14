@@ -1,8 +1,12 @@
 const BootstrapElementsCore = {
+    EVENTS:{
+        BOOTSTRAP_ELEMENTS_TOGGLE: 'BOOTSTRAP_ELEMENTS_TOGGLE',
+    },
     STYLE_ID:'bootstrap-elements-style',
     CORE_STYLE_ID:'bootstrap-elements-core-style',
     sheet: new CSSStyleSheet(),
     coreSheet: new CSSStyleSheet(),
+    subscriptions:{},
     init(){
         this.sheet.replace(BootstrapCSS);
         document.addEventListener('DOMContentLoaded',this.onLoad.bind(this));
@@ -18,6 +22,19 @@ const BootstrapElementsCore = {
         style.innerHTML = innerHTML;
         document.head.appendChild(style);
 
+    },
+    unsubscribe(eventName,_callback){
+        if (!this.subscriptions[eventName]) return;
+        this.subscriptions[eventName].forEach((callback, index) => {
+            if (callback === _callback) this.subscriptions[eventName].splice(index,1);
+        });
+    },
+    subscribe(eventName,callback){
+        if (!this.subscriptions[eventName]) this.subscriptions[eventName]= [];
+        this.subscriptions[eventName].push(callback);
+    },
+    dispatch(eventName,detail){
+        if (this.subscriptions[eventName]) this.subscriptions[eventName].forEach(callback => callback(detail));
     }
 }
 BootstrapElementsCore.init();

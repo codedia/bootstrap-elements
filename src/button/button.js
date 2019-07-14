@@ -1,6 +1,6 @@
 class BootstrapElementsButton extends HTMLElement {
     static get observedAttributes() {
-        return ['type', 'size', 'block', 'active', 'disabled', 'toggle'];
+        return ['type', 'size', 'block', 'active', 'disabled', 'toggle', 'toggletarget'];
     }
     constructor(){
         super();
@@ -12,6 +12,7 @@ class BootstrapElementsButton extends HTMLElement {
             active:'',
             disabled: '',
             toggle: '',
+            toggletarget: '',
         });
         this.onToggleHanlder = this.onToggle.bind(this);
     }
@@ -23,6 +24,12 @@ class BootstrapElementsButton extends HTMLElement {
         shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
         this.element.innerHTML = this.getTemplate();
         this.update();
+        this.element.addEventListener('click', this.onClick.bind(this));
+    }
+    onClick(){
+        if (this.toggletarget) BootstrapElementsCore.dispatch(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, {
+            id: this.toggletarget,
+        });
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this[name] = newValue;
