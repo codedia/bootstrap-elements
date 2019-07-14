@@ -1,29 +1,67 @@
 class BootstrapElementsButton extends HTMLElement {
     static get observedAttributes() {
-        return ['type'];
+        return ['type', 'size', 'block', 'active', 'disabled', 'toggle'];
     }
     constructor(){
         super();
-        this.type = 'primary';
-        this.element = document.createElement('div');
-        this.styleElement = document.createElement('style');
+        this.element = document.createElement('span');
+        CustomElementHelper.setProperties(this, {
+            type: 'primary',
+            size: '',
+            block: '',
+            active:'',
+            disabled: '',
+            toggle: '',
+        });
+        this.onToggleHanlder = this.onToggle.bind(this);
     }
     connectedCallback(){
         let shadowRoot = this.attachShadow({
             mode: 'open'
         });
-        //shadowRoot.appendChild(this.styleElement);
         shadowRoot.appendChild(this.element);
-        console.log(BootstrapElementsCore.sheet);
-        shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet];
+        shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
         this.element.innerHTML = this.getTemplate();
+        this.update();
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this[name] = newValue;
-        updateType();
+        this.update();
     }
-    updateType(){
-        this.element.querySelector('button').className = `btn btn-${this.type}`;
+    update(){
+        const button = this.element.querySelector('button');
+        if (button) {
+            button.className = `
+                btn btn-${this.type}
+                ${this.size ? ` btn-${this.size}`: ''}
+                ${this.block === 'true' ? ` btn-block`: ''} 
+                ${this.toggle || this.active === 'true' ? ` active`: ''} 
+            `;
+
+            button.disabled = this.isDisabled();
+            if(this.isDisabled()) {
+                this.classList.add('disabled-events');
+            }else{
+                this.classList.remove('disabled-events');
+            }
+            if (this.toggle) {
+                button.addEventListener('click', this.onToggleHanlder);
+            }else{
+                button.removeEventListener('click', this.onToggleHanlder);
+            }
+
+        }
+    }
+    onToggle(){
+        const button = this.element.querySelector('button');
+        if (!button.classList.contains('active')) {
+            button.classList.add('active');
+        } else{
+            button.classList.remove('active');
+        }
+    }
+    isDisabled(){
+        return this.hasAttribute('disabled') && this.disabled !== "false";
     }
     getTemplate() {
         return `

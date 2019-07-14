@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bootstrap Elements - Components</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap-elements.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body class="component">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">bootstrap elements</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Components</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid flex-1 display-flex flex-d-row">
+        <sidebar>
+            <div class="nav flex-column "role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" section-toggle="button-section">Buttons</a>
+                <a class="nav-link" section-toggle="alerts-section">Alerts</a>
+                <a class="nav-link" section-toggle="carousel-section">Carousel</a>
+                <a class="nav-link" section-toggle="collapse-section">Collapse</a>
+            </div>
+        </sidebar>
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <section class="show" id="button-section">
+                            <h3 class="h3">Buttons</h3>
+                            <div class="card" >
+                                <div class="card-body">
+                                    <span class="example-text">EXAMPLE</span>
+                                    <be-button type="primary">primary</be-button>
+                                    <be-button type="secondary">secondary</be-button>
+                                    <be-button type="success">success</be-button>
+                                    <be-button type="danger">danger</be-button>
+                                    <be-button type="warning">warning</be-button>
+                                </div>
+                                <div class="card-body">
+                                    <span class="example-text">EXAMPLE</span>
+                                    <be-button type="primary" size="lg">primary</be-button>
+                                    <be-button type="secondary" size="sm">secondary</be-button>
+                                </div>
+                                <div class="card-body">
+                                    <span class="example-text">EXAMPLE</span>
+                                    <be-button type="primary" size="lg" block="true">primary</be-button>
+                                    <be-button type="secondary" size="sm" block="true">secondary</be-button>
+                                </div>
+                                <div class="card-body">
+                                    <span class="example-text">EXAMPLE</span>
+                                    <be-button type="primary" active="true">primary</be-button>
+                                    <be-button type="secondary" active="true">secondary</be-button>
+                                </div>
+                                <div class="card-body">
+                                    <span class="example-text">EXAMPLE</span>
+                                    <be-button type="primary"  disabled>primary</be-button>
+                                    <be-button type="secondary" disabled>secondary</be-button>
+                                </div>
+                                <div class="card-body">
+                                    <span class="example-text">EXAMPLE</span>
+                                    <be-button type="primary" toggle="true">single toggle</be-button>
+                                </div>
+                                 <div class="card-body">
+                                     <span class="example-text">EXAMPLE</span>
+                                     <be-wrapper>
+                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                             <label class="btn btn-secondary active">
+                                                 <input type="radio" name="options" id="option1" autocomplete="off"
+                                                     checked> Active
+                                             </label>
+                                             <label class="btn btn-secondary">
+                                                 <input type="radio" name="options" id="option2" autocomplete="off">
+                                                 Radio
+                                             </label>
+                                             <label class="btn btn-secondary">
+                                                 <input type="radio" name="options" id="option3" autocomplete="off">
+                                                 Radio
+                                             </label>
+                                         </div>
+                                     </be-wrapper>
+
+                                      <be-buttongroup>
+                                        <be-button>active</be-button>    
+                                        <be-button>secondary</be-button>    
+                                      </be-buttongroup>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="alerts-section">
+                            <h3 class="h3">Alerts</h3>
+                            <div class="card">
+                                <div class="card-body">
+                                    <be-alert type="primary">A simple primary alert
+                                    </be-alert>
+                                    <be-alert type="secondary">A simple secondary alert
+                                    </be-alert>
+                                    <be-alert type="warning" dismissible="true">A warning dismissible alert
+                                    </be-alert>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                        <section id="carousel-section">
+                            <h3 class="h3">Carousel</h3>
+                            <div class="card">
+                                <div class="card-body">
+                                    <be-carousel>
+                                        <div class="carousel-inner">
+                                         <div class="carousel-item active">
+                                             <div class="carousel-slide">First Slide</div>
+                                         </div>
+                                         <div class="carousel-item">
+                                             <div class="carousel-slide">Second Slide</div>
+                                         </div>
+                                         <div class="carousel-item">
+                                             <div class="carousel-slide">Third Slide</div>
+                                         </div>
+                                         </div>
+                                    </be-carousel>
+                                </div>
+                                <div class="card-body">
+                                    <h3>Crossfade</h3>
+                                    <be-carousel crossfade="true">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="carousel-slide">First Slide</div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="carousel-slide">Second Slide</div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="carousel-slide">Third Slide</div>
+                                            </div>
+                                        </div>
+                                    </be-carousel>
+                                </div>
+                                <div class="card-body">
+                                    <h3>Navigation</h3>
+                                    <be-carousel>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="carousel-slide">First Slide</div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="carousel-slide">Second Slide</div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="carousel-slide">Third Slide</div>
+                                            </div>
+                                        </div>
+                                         <a class="carousel-control-prev" role="button"
+                                             data-slide="prev">
+                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                             <span class="sr-only">Previous</span>
+                                         </a>
+                                         <a class="carousel-control-next"  role="button"
+                                             data-slide="next">
+                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                             <span class="sr-only">Next</span>
+                                         </a>
+                                    </be-carousel>
+                                </div>
+                                 <div class="card-body">
+                                     <h3>Interval</h3>
+                                     <be-carousel interval="500">
+                                         <div class="carousel-inner">
+                                             <div class="carousel-item active">
+                                                 <div class="carousel-slide">First Slide</div>
+                                             </div>
+                                             <div class="carousel-item">
+                                                 <div class="carousel-slide">Second Slide</div>
+                                             </div>
+                                             <div class="carousel-item">
+                                                 <div class="carousel-slide">Third Slide</div>
+                                             </div>
+                                         </div>
+                                     </be-carousel>
+                                 </div>
+                            </div>
+                        </section>
+                        <section id="collapse-section">
+                            <h3 class="h3">Collapse</h3>
+                            <div class="card">
+                                <div class="card-body">
+                                    <be-collapsebutton target="collapseExample" >
+                                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                            data-target="#collapseExample" aria-expanded="false"
+                                            aria-controls="collapseExample">
+                                            Button with data-target
+                                        </button>
+                                    </be-collapsebutton>
+                                    <be-collapsible collapseid="collapseExample">
+                                        <div class="card card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                                            terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+                                            labore wes anderson cred nesciunt sapiente ea proident.
+                                        </div>
+                                    </be-collapsible>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3>Accordion</h3>
+                                    <be-wrapper>
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">
+                                                    <be-collapsebutton target="collapseOne">
+                                                        <button class="btn btn-link" type="button"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            Collapsible Group Item #1
+                                                        </button>
+                                                    </be-collapsebutton>
+                                                    
+                                                </h5>
+                                            </div>
+                                            <be-collapsible collapseid="collapseOne" show="true">
+                                                <div>
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                                                        terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
+                                                        skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                                        single-origin coffee nulla assumenda shoreditch et. Nihil anim
+                                                        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                                                        sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                                                        occaecat craft beer farm-to-table, raw denim aesthetic synth
+                                                        nesciunt you probably haven't heard of them accusamus labore
+                                                        sustainable VHS.
+                                                    </div>
+                                                </div>
+                                            </be-collapible>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">
+                                                    <be-collapsebutton target="collapseTwo">
+                                                        <button class="btn btn-link" type="button" aria-expanded="true"
+                                                            aria-controls="collapseTwo">
+                                                            Collapsible Group Item #2
+                                                        </button>
+                                                    </be-collapsebutton>
+
+                                                </h5>
+                                            </div>
+                                            <be-collapsible collapseid="collapseTwo">
+                                                <div aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life
+                                                        accusamus
+                                                        terry richardson ad squid. 3 wolf moon officia aute, non
+                                                        cupidatat
+                                                        skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                                                        eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                                        single-origin coffee nulla assumenda shoreditch et. Nihil anim
+                                                        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                                                        sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                                        Leggings
+                                                        occaecat craft beer farm-to-table, raw denim aesthetic synth
+                                                        nesciunt you probably haven't heard of them accusamus labore
+                                                        sustainable VHS.
+                                                    </div>
+                                                </div>
+                                                </be-collapible>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">
+                                                    <be-collapsebutton target="collapseThree">
+                                                        <button class="btn btn-link" type="button" aria-expanded="true"
+                                                            aria-controls="collapseTwo">
+                                                            Collapsible Group Item #3
+                                                        </button>
+                                                    </be-collapsebutton>
+
+                                                </h5>
+                                            </div>
+                                            <be-collapsible collapseid="collapseThree">
+                                                <div aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life
+                                                        accusamus
+                                                        terry richardson ad squid. 3 wolf moon officia aute, non
+                                                        cupidatat
+                                                        skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                                                        eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                                        single-origin coffee nulla assumenda shoreditch et. Nihil anim
+                                                        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                                                        sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                                        Leggings
+                                                        occaecat craft beer farm-to-table, raw denim aesthetic synth
+                                                        nesciunt you probably haven't heard of them accusamus labore
+                                                        sustainable VHS.
+                                                    </div>
+                                                </div>
+                                                </be-collapible>
+                                        </div>
+                                    </div>
+                                    </be-wrapper>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        
+    </div>
+</body>
+</html>

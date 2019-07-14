@@ -5,14 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bootstrap Elements</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery.min.js"></script>
     <script src="bootstrap-elements.js"></script>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <h1>Buttons</h1>
-    <be-button type="primary">primary</be-button>
-    <be-button type="secondary">secondary</be-button>
-    <be-button type="success">success</be-button>
-    <be-button type="danger">danger</be-button>
-    <be-button type="warning">warning</be-button>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">bootstrap elements</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="components.html">Components</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="jumbotron jumbotron-fluid clear-background">
+                <div class="container">
+                    <div class="row">
+                        <div class="col" style="text-align: center">
+                            <img src="image/logo_p.png" width="150px" >
+                            <p class="jumbotron-heading display-4 logo">bootstrap elements</p>
+                            <p class="lead">Custom Element wrappers for Bootstrap 4 components</p>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+    </div>
 </body>
 </html>

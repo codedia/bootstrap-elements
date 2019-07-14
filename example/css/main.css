@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ccc;
+}
+
+.logo {
+    font-family: 'Roboto', sans-serif;
+}
+.clear-background {
+    background-color: transparent !important;
+}
+.display-flex {
+    display: flex;
+}
+.flex-d-row{
+    flex-direction: row;
+}
+.flex-1{
+    flex:1;
+}
+.component {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+sidebar{
+    display: inline-block;
+    height: 100%;
+    overflow: auto;
+}
+.main {
+    flex:1;
+    height: 100%;
+    overflow: auto;
+    padding: 2rem;
+}
+section {
+    display: none !important;
+}
+section.show {
+    display: block !important;
+}
+section .card-body {
+    padding-top: 1.7rem;
+}
+section .card-body>.example-text {
+    position: absolute;
+    top: 0.2rem;
+}
+
+[section-toggle] {
+    cursor: pointer;
+}
+[section-toggle].active {
+    color: var(--blue) !important;
+}
+
+.carousel-slide {
+    height: 300px;
+    background-color: var(--gray);
+    text-align: center;
+    font-size: 2rem;
+}
+
+@media (max-width: 576px) {
+   .container-fluid.flex-d-row {
+        flex-direction: column;
+   }
+   sidebar{
+       height: auto;
+   }
+}
+
