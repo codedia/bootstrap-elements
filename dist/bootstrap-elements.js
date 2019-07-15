@@ -7128,19 +7128,20 @@ class BootstrapElementsButtonGroup extends HTMLElement {
 customElements.define('be-buttongroup', BootstrapElementsButtonGroup);
 class BootstrapElementsButton extends HTMLElement {
     static get observedAttributes() {
-        return ['type', 'size', 'block', 'active', 'disabled', 'toggle', 'toggletarget'];
+        return ['type', 'size', 'block', 'active', 'disabled', 'toggle', 'toggletarget','link'];
     }
     constructor(){
         super();
         this.element = document.createElement('span');
         CustomElementHelper.setProperties(this, {
-            type: 'primary',
+            type: '',
             size: '',
             block: '',
             active:'',
             disabled: '',
             toggle: '',
             toggletarget: '',
+            link: '',
         });
         this.onToggleHanlder = this.onToggle.bind(this);
     }
@@ -7170,6 +7171,7 @@ class BootstrapElementsButton extends HTMLElement {
                 btn btn-${this.type}
                 ${this.size ? ` btn-${this.size}`: ''}
                 ${this.block === 'true' ? ` btn-block`: ''} 
+                ${this.link === 'true' ? ` btn-link`: ''} 
                 ${this.toggle || this.active === 'true' ? ` active`: ''} 
             `;
 
@@ -7295,35 +7297,6 @@ class BootstrapElementsCarousel extends HTMLElement {
     }
 }
 customElements.define('be-carousel', BootstrapElementsCarousel);
-class BootstrapElementsCollapseButton extends HTMLElement {
-    static EVENT = {
-        TOGGLE_COLLAPSE: 'TOGGLE_COLLAPSE',
-    }
-    static get observedAttributes() {
-        return ['target'];
-    }
-    constructor() {
-        super();
-        CustomElementHelper.setProperties(this, {
-            target: '',
-        });
-    }
-    connectedCallback() {
-        this.addEventListener('click', this.onClick.bind(this));
-    }
-    onClick(){
-         const customEvent = new CustomEvent(BootstrapElementsCollapseButton.EVENT.TOGGLE_COLLAPSE, {
-             detail: {
-                 target: this.target,
-             }
-         });
-         document.dispatchEvent(customEvent);
-    }
-    attributeChangedCallback(name, oldValue, newValue) {
-        this[name] = newValue;
-    }
-}
-customElements.define('be-collapsebutton', BootstrapElementsCollapseButton);
 class BootstrapElementsCollapsible extends HTMLElement {
     static EVENT = {
         TOGGLE_COLLAPSE: 'TOGGLE_COLLAPSE',
@@ -7342,14 +7315,15 @@ class BootstrapElementsCollapsible extends HTMLElement {
         this.update();
         this.classList.add('collapse');
         this.classList.add('display-block');
-        document.addEventListener(BootstrapElementsCollapseButton.EVENT.TOGGLE_COLLAPSE, (event) => {
-            if (event.detail.target === this.collapseid)
-            this.show = this.show === 'true' ? 'false' : 'true';
-        });
+        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this));
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this[name] = newValue;
         this.update();
+    }
+    onToggle(event){
+        if (event.id === this.collapseid)
+            this.show = this.show === 'true' ? 'false' : 'true';
     }
     update() {
          $(this).collapse(this.show === 'true' ? 'show' : 'hide');
@@ -7423,23 +7397,22 @@ class BootstrapElementsDropdownMenu extends HTMLElement {
         this.disposeHandler = this.dispose.bind(this);
     }
     connectedCallback() {
-        window.addEventListener('click', this.disposeHandler);
         let shadowRoot = this.attachShadow({
             mode: 'open'
         });
         shadowRoot.appendChild(this.element);
+        this.classList.add('display-block');
+        window.addEventListener('click', this.disposeHandler);
         shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
         this.element.innerHTML = this.getTemplate();
         this.element.setAttribute('data-toggle','dropdown');
         this.update();
         BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this));
-        this.element.querySelector('.dropdown-menu').addEventListener('click', () => {
-            console.log('click');
-            this.dispose()
+        this.element.querySelector('.dropdown-menu').addEventListener('click', (event) => {
+            this.dispose();
         });
     }
     onToggle(event){
-        console.log('onToggle');
         if(event.id === this.toggleid) {
             setTimeout(() => {
                 $(this.element).dropdown('toggle');
@@ -7449,8 +7422,8 @@ class BootstrapElementsDropdownMenu extends HTMLElement {
     }
     dispose(){
         const menu = this.element.querySelector('.dropdown-menu');
-        console.log(menu, menu.classList.contains('show'));
         if (menu.classList.contains('show')) {
+            $(this.element).dropdown('dispose');
             menu.classList.remove('show');
         }
     }
@@ -7503,6 +7476,56 @@ class BootstrapElementsDropdown extends HTMLElement {
     }
 }
 customElements.define('be-dropdown', BootstrapElementsDropdown);
+class BootstrapElementsModal extends HTMLElement {
+    static get observedAttributes() {
+        return ['toggleid'];
+    }
+    constructor() {
+        super();
+        this.element = document.createElement('span');
+        CustomElementHelper.setProperties(this, {});;
+    }
+    connectedCallback() {
+        let shadowRoot = this.attachShadow({
+            mode: 'open'
+        });
+        shadowRoot.appendChild(this.element);
+        this.classList.add('display-block');
+        shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
+        this.element.innerHTML = this.getTemplate();
+        this.update();
+    }
+    
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[name] = newValue;
+        this.update();
+    }
+    update() {}
+    getTemplate() {
+        return `
+            <div class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        `
+    }
+}
+customElements.define('be-modal', BootstrapElementsModal);
 const CustomElementHelper = {
     setProperties(element, defaultValues) {
         if (defaultValues) {

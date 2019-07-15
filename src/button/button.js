@@ -1,18 +1,19 @@
 class BootstrapElementsButton extends HTMLElement {
     static get observedAttributes() {
-        return ['type', 'size', 'block', 'active', 'disabled', 'toggle', 'toggletarget'];
+        return ['type', 'size', 'block', 'active', 'disabled', 'toggle', 'toggletarget','link'];
     }
     constructor(){
         super();
         this.element = document.createElement('span');
         CustomElementHelper.setProperties(this, {
-            type: 'primary',
+            type: '',
             size: '',
             block: '',
             active:'',
             disabled: '',
             toggle: '',
             toggletarget: '',
+            link: '',
         });
         this.onToggleHanlder = this.onToggle.bind(this);
     }
@@ -42,6 +43,7 @@ class BootstrapElementsButton extends HTMLElement {
                 btn btn-${this.type}
                 ${this.size ? ` btn-${this.size}`: ''}
                 ${this.block === 'true' ? ` btn-block`: ''} 
+                ${this.link === 'true' ? ` btn-link`: ''} 
                 ${this.toggle || this.active === 'true' ? ` active`: ''} 
             `;
 

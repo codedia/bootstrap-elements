@@ -34,6 +34,7 @@
                 <a class="nav-link" section-toggle="carousel-section">Carousel</a>
                 <a class="nav-link" section-toggle="collapse-section">Collapse</a>
                 <a class="nav-link" section-toggle="dropdown-section">Dropdown</a>
+                <a class="nav-link" section-toggle="modal-section">Modal</a>
             </div>
         </sidebar>
         <div class="main">
@@ -197,12 +198,9 @@
                             <h3 class="h3">Collapse</h3>
                             <div class="card">
                                 <div class="card-body">
-                                    <be-collapsebutton target="collapseExample" >
-                                        <button class="btn btn-primary" type="button" data-toggle="collapse"
-                                            data-target="#collapseExample" aria-expanded="false"
-                                            aria-controls="collapseExample">
-                                            Button with data-target
-                                        </button>
+                                    <be-button toggletarget="collapseExample" type="primary">
+                                        Button with `toggletarget`
+                                    </be-button>
                                     </be-collapsebutton>
                                     <be-collapsible collapseid="collapseExample">
                                         <div class="card card-body">
@@ -221,12 +219,9 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h5 class="mb-0">
-                                                    <be-collapsebutton target="collapseOne">
-                                                        <button class="btn btn-link" type="button"
-                                                            aria-expanded="true" aria-controls="collapseOne">
-                                                            Collapsible Group Item #1
-                                                        </button>
-                                                    </be-collapsebutton>
+                                                    <be-button toggletarget="collapseOne" link="true">
+                                                        Collapsible Group Item #1
+                                                    </be-button>
                                                     
                                                 </h5>
                                             </div>
@@ -250,12 +245,9 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h5 class="mb-0">
-                                                    <be-collapsebutton target="collapseTwo">
-                                                        <button class="btn btn-link" type="button" aria-expanded="true"
-                                                            aria-controls="collapseTwo">
-                                                            Collapsible Group Item #2
-                                                        </button>
-                                                    </be-collapsebutton>
+                                                    <be-button toggletarget="collapseTwo" link="true">
+                                                        Collapsible Group Item #2
+                                                    </be-button>
 
                                                 </h5>
                                             </div>
@@ -283,12 +275,9 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h5 class="mb-0">
-                                                    <be-collapsebutton target="collapseThree">
-                                                        <button class="btn btn-link" type="button" aria-expanded="true"
-                                                            aria-controls="collapseTwo">
+                                                    <be-button toggletarget="collapseThree" link="true">
                                                             Collapsible Group Item #3
-                                                        </button>
-                                                    </be-collapsebutton>
+                                                    </be-button>
 
                                                 </h5>
                                             </div>
@@ -326,11 +315,19 @@
                                     <be-dropdown>
                                         <be-button type="primary" toggletarget="dropdownmenu">primary</be-button>
                                          <be-dropdownmenu toggleid="dropdownmenu">
-                                             <a class="dropdown-item" href="#">Action</a>
+                                             <a class="dropdown-item" href="#" onclick="console.log('link clicked')">Action</a>
                                              <a class="dropdown-item" href="#">Another action</a>
                                              <a class="dropdown-item" href="#">Something else here</a>
                                          </be-dropdownmenu>
                                     </be-dropdown>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="modal-section">
+                            <h3 class="h3">Modal</h3>
+                            <div class="card">
+                                <div class="card-body">
+                                    <be-modal></be-modal>
                                 </div>
                             </div>
                         </section>
