@@ -327,8 +327,26 @@
                             <h3 class="h3">Modal</h3>
                             <div class="card">
                                 <div class="card-body">
-                                    <be-button toggletarget="modal1">show modal</be-button> 
-                                    <be-modal toggleid="modal1"></be-modal>
+                                    <be-button toggletarget="modal1" type="primary">show modal</be-button> 
+                                    <be-modal toggleid="modal1">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Modal title</h5>
+                                                   <be-button toggletarget="modal1"  close="true">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </be-button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Modal body text goes here.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <be-button toggletarget="modal1" type="secondary">Close</be-button>
+                                                    <be-button type="primary">Save</be-button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </be-modal>
                                 </div>
                             </div>
                         </section>

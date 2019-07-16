@@ -1,6 +1,6 @@
 class BootstrapElementsButton extends HTMLElement {
     static get observedAttributes() {
-        return ['type', 'size', 'block', 'active', 'disabled', 'toggle', 'toggletarget','link'];
+        return ['type', 'size', 'block', 'active', 'disabled', 'toggle', 'toggletarget','link', 'close'];
     }
     constructor(){
         super();
@@ -14,6 +14,7 @@ class BootstrapElementsButton extends HTMLElement {
             toggle: '',
             toggletarget: '',
             link: '',
+            close: '',
         });
         this.onToggleHanlder = this.onToggle.bind(this);
     }
@@ -40,7 +41,8 @@ class BootstrapElementsButton extends HTMLElement {
         const button = this.element.querySelector('button');
         if (button) {
             button.className = `
-                btn btn-${this.type}
+                btn ${this.type !== '' ? ` btn-${this.type}` : ''}
+                ${this.close === 'true' ? ' close' : ''}
                 ${this.size ? ` btn-${this.size}`: ''}
                 ${this.block === 'true' ? ` btn-block`: ''} 
                 ${this.link === 'true' ? ` btn-link`: ''} 
