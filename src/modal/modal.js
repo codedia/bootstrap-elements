@@ -20,7 +20,7 @@ class BootstrapElementsModal extends HTMLElement {
         shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
         this.element.innerHTML = this.getTemplate();
         this.update();
-        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this));
+        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this), this);
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this[name] = newValue;

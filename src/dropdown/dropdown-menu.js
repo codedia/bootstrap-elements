@@ -21,7 +21,7 @@ class BootstrapElementsDropdownMenu extends HTMLElement {
         this.element.innerHTML = this.getTemplate();
         this.element.setAttribute('data-toggle','dropdown');
         this.update();
-        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this));
+        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this), this);
         this.element.querySelector('.dropdown-menu').addEventListener('click', (event) => {
             this.dispose();
         });

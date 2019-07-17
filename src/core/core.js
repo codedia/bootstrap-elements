@@ -23,18 +23,21 @@ const BootstrapElementsCore = {
         document.head.appendChild(style);
 
     },
-    unsubscribe(eventName,_callback){
+    unsubscribe(eventName,_element){
         if (!this.subscriptions[eventName]) return;
-        this.subscriptions[eventName].forEach((callback, index) => {
-            if (callback === _callback) this.subscriptions[eventName].splice(index,1);
+        this.subscriptions[eventName].forEach((obj, index) => {
+            if (obj.element === _element) this.subscriptions[eventName].splice(index,1);
         });
     },
-    subscribe(eventName,callback){
+    subscribe(eventName,callback, element){
         if (!this.subscriptions[eventName]) this.subscriptions[eventName]= [];
-        this.subscriptions[eventName].push(callback);
+        this.subscriptions[eventName].push({callback, element});
     },
     dispatch(eventName,detail){
-        if (this.subscriptions[eventName]) this.subscriptions[eventName].forEach(callback => callback(detail));
+        if (this.subscriptions[eventName]) this.subscriptions[eventName].forEach(obj => {
+                if(obj.callback)obj.callback(detail,obj.element);
+            }
+        );
     }
 }
 BootstrapElementsCore.init();

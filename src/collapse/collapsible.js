@@ -16,7 +16,7 @@ class BootstrapElementsCollapsible extends HTMLElement {
         this.update();
         this.classList.add('collapse');
         this.classList.add('display-block');
-        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this));
+        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this),this);
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this[name] = newValue;

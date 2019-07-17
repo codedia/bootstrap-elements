@@ -7317,7 +7317,7 @@ class BootstrapElementsCollapsible extends HTMLElement {
         this.update();
         this.classList.add('collapse');
         this.classList.add('display-block');
-        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this));
+        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this),this);
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this[name] = newValue;
@@ -7357,18 +7357,21 @@ const BootstrapElementsCore = {
         document.head.appendChild(style);
 
     },
-    unsubscribe(eventName,_callback){
+    unsubscribe(eventName,_element){
         if (!this.subscriptions[eventName]) return;
-        this.subscriptions[eventName].forEach((callback, index) => {
-            if (callback === _callback) this.subscriptions[eventName].splice(index,1);
+        this.subscriptions[eventName].forEach((obj, index) => {
+            if (obj.element === _element) this.subscriptions[eventName].splice(index,1);
         });
     },
-    subscribe(eventName,callback){
+    subscribe(eventName,callback, element){
         if (!this.subscriptions[eventName]) this.subscriptions[eventName]= [];
-        this.subscriptions[eventName].push(callback);
+        this.subscriptions[eventName].push({callback, element});
     },
     dispatch(eventName,detail){
-        if (this.subscriptions[eventName]) this.subscriptions[eventName].forEach(callback => callback(detail));
+        if (this.subscriptions[eventName]) this.subscriptions[eventName].forEach(obj => {
+                if(obj.callback)obj.callback(detail,obj.element);
+            }
+        );
     }
 }
 BootstrapElementsCore.init();
@@ -7409,7 +7412,7 @@ class BootstrapElementsDropdownMenu extends HTMLElement {
         this.element.innerHTML = this.getTemplate();
         this.element.setAttribute('data-toggle','dropdown');
         this.update();
-        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this));
+        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this), this);
         this.element.querySelector('.dropdown-menu').addEventListener('click', (event) => {
             this.dispose();
         });
@@ -7500,7 +7503,7 @@ class BootstrapElementsModal extends HTMLElement {
         shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
         this.element.innerHTML = this.getTemplate();
         this.update();
-        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this));
+        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this), this);
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this[name] = newValue;
@@ -7526,6 +7529,22 @@ class BootstrapElementsModal extends HTMLElement {
     }
 }
 customElements.define('be-modal', BootstrapElementsModal);
+const BootstrapElementsPopover = {
+    init(){
+        window.addEventListener('DOMContentLoaded', this.onLoad.bind(this))
+    },
+    onLoad(){
+        console.log('loaded');
+        BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this), this);
+    },
+    onToggle(event,element){
+    	if (element && event.id === 'popover') {
+            console.log('popover', element)
+        }
+    }
+    
+};
+BootstrapElementsPopover.init();
 const CustomElementHelper = {
     setProperties(element, defaultValues) {
         if (defaultValues) {
