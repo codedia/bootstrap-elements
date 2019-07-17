@@ -7128,7 +7128,21 @@ class BootstrapElementsButtonGroup extends HTMLElement {
 customElements.define('be-buttongroup', BootstrapElementsButtonGroup);
 class BootstrapElementsButton extends HTMLElement {
     static get observedAttributes() {
-        return ['type', 'size', 'block', 'active', 'disabled', 'toggle', 'toggletarget','link', 'close'];
+        return [
+            'type',
+            'size',
+            'block',
+            'active',
+            'disabled',
+            'toggle',
+            'toggletarget',
+            'link',
+            'close',
+            'popoverplacement',
+            'popovercontent',
+            'popovertitle',
+            'popovertrigger',
+        ];
     }
     constructor(){
         super();
@@ -7143,6 +7157,10 @@ class BootstrapElementsButton extends HTMLElement {
             toggletarget: '',
             link: '',
             close: '',
+            popoverplacement: '',
+            popovercontent: '',
+            popovertitle: '',
+            popovertrigger: '',
         });
         this.onToggleHanlder = this.onToggle.bind(this);
     }
@@ -7159,6 +7177,13 @@ class BootstrapElementsButton extends HTMLElement {
     onClick(){
         if (this.toggletarget) BootstrapElementsCore.dispatch(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, {
             id: this.toggletarget,
+            element: this.element.querySelector('button'),
+            popover:{
+                placement: this.popoverplacement,
+                content: this.popovercontent,
+                title: this.popovertitle,
+                trigger: this.popovertrigger,
+            }
         });
     }
     attributeChangedCallback(name, oldValue, newValue) {
@@ -7534,12 +7559,25 @@ const BootstrapElementsPopover = {
         window.addEventListener('DOMContentLoaded', this.onLoad.bind(this))
     },
     onLoad(){
-        console.log('loaded');
         BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this), this);
     },
     onToggle(event,element){
     	if (element && event.id === 'popover') {
-            console.log('popover', element)
+            console.log('popover', event);
+                $(event.element).popover({
+                    container: event.element,
+                    trigger: event.popover.popovertrigger ? event.popover.popovertrigger : 'click',
+                    content: event.popover.content,
+                    title: event.popover.title,
+                    placement: event.popover.placement,
+                });
+            if (!element.popoverShowing) {
+                element.popoverShowing = true;
+                $(event.element).popover('show'); 
+            }else{
+                element.popoverShowing = false;
+                $(event.element).popover('hide');
+            }
         }
     }
     
