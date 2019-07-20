@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bootstrap Elements - Getting Started</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="image/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap-elements.js"></script>
+    <script src="js/prism.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/prism.css">
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">bootstrap elements</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Getting Started</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="components.html">Components</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+                    <div class="row">
+                        <div class="col" style="text-align: center">
+                            <h1 class="display-3">Getting Started</h1>
+                            <p class="lead">
+                                Bootstrap Elements Leverages Bootstrap's CSS and JS to provide a native bootstrap experience.  
+                            </p>
+                            <h4 class="display-4">JS</h4>
+                            <p>Bootstrap Elements is a single js file which bundles Bootstrap js, css and Bootstrap Elements code</p>
+                            <p>You might be wondering why the css is bundled? This is so that the css can be available within the shadow DOM. The CSS is converted to JS and then a style tag is adopted by the custom elements.</p>
+                            <p>You can provide your own css. Please see the guide below.</p>
+                            <pre class="language-html">
+                                <code>
+&lt;script src=&quot;bootstrap-elements.js&quot;&gt;&lt;/script&gt;
+                                </code>
+                            </pre>
+                            <h3 class="display-4">Custom Bootstrap CSS</h4>
+                            <p>If you want to provide your own css you can pass it via a variable on the window.</p>
+                            <pre class="language-html">
+                                <code>
+&lt;script&gt;
+    window.CustomBootstrapCSS = "body { background-color:red }";
+&lt;/script&gt;
+&lt;script src=&quot;bootstrap-elements.js&quot;&gt;&lt;/script&gt;
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+    </div>
+      <!-- Site footer -->
+      <footer class="site-footer">
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-12 col-md-9">
+                      <h6>About</h6>
+                      <p class="text-justify">Bootstrap Elements is designed to make Bootstrap components work within the shadow DOM. Bootstrap Elements are built using custom elements. The CSS is all from Bootstrap and the JS is leveraged from Bootstrap's JS API.</p>
+                  </div>
+
+                  <div class="col-xs-6 col-md-3">
+                      <h6>Quick Links</h6>
+                      <ul class="footer-links">
+                          <li><a href="getting-started.html">Getting Started</a></li>
+                          <li><a href="components.html">Components</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <hr>
+          </div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-8 col-sm-6 col-xs-12">
+                      <p class="copyright-text">Copyright &copy; 2019 All Rights Reserved by
+                          <a href="#">Codedia</a>.
+                      </p>
+                  </div>
+
+                  <div class="col-md-4 col-sm-6 col-xs-12">
+                      <ul class="social-icons">
+                          <li><a class="github" href="https://github.com/codedia" target="_blank"><img width="20px"
+                                      style="filter: invert(100%);"
+                                      src="image/github.svg"></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </footer>
+</body>
+</html>

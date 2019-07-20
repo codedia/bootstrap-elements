@@ -52,15 +52,19 @@ class BootstrapElementsNavItem extends HTMLElement {
     getStyleTemplate(){
         return `
         .tab-item {
-            ${BootstrapElementsCore.getStyle('.nav-tabs .nav-item').split('{')[1]}
-        .tab-item a {  ${BootstrapElementsCore.getStyle('.nav-tabs .nav-link').split('{')[1]}
-        .tab-item a.active {  ${BootstrapElementsCore.getStyle('.nav-tabs .nav-link.active').split('{')[1]}
-        .pill-item a.active {
-            ${BootstrapElementsCore.getStyle('.nav-pills .nav-link').split('{')[1]}
-        .pill-item a.active { ${BootstrapElementsCore.getStyle('.nav-pills .nav-link.active').split('{')[1]}
+            ${this.getStyleAsString('.nav-tabs .nav-item')}
+        .tab-item a {  ${this.getStyleAsString('.nav-tabs .nav-link')}
+        .tab-item a.active {  ${this.getStyleAsString('.nav-tabs .nav-link.active')}
+        .pill-item a.active { ${this.getStyleAsString('.nav-pills .nav-link')}
+        .pill-item a.active { ${this.getStyleAsString('.nav-pills .nav-link.active')}
         `;
         }
-        update() {
+    getStyleAsString(selector){
+       const styleString = BootstrapElementsCore.getStyle(selector);
+       if (styleString) return styleString.split('{')[1];
+       return '}';
+    }
+    update() {
         this.element.className = ` 
             nav-item
             ${this.tab === 'true' ? ` tab-item`: ''} 

@@ -7330,19 +7330,6 @@ class BootstrapElementsCarousel extends HTMLElement {
     }
 }
 customElements.define('be-carousel', BootstrapElementsCarousel);
-class BootstrapElementsCode extends HTMLTextAreaElement {
-    constructor() {
-        super();
-        this.childElement = null;
-        this.fragment = document.createDocumentFragment();
-        this.element = document.createElement('div');
-    }
-    connectedCallback() {
-        console.log('connected', this);
-    }
-    addListeners() {}
-}
-customElements.define('be-code', BootstrapElementsCode, {extends: 'textarea'});
 class BootstrapElementsCollapsible extends HTMLElement {
     static EVENT = {
         TOGGLE_COLLAPSE: 'TOGGLE_COLLAPSE',
@@ -7387,7 +7374,7 @@ const BootstrapElementsCore = {
     coreSheet: new CSSStyleSheet(),
     subscriptions:{},
     init(){
-        this.sheet.replace(BootstrapCSS);
+        this.sheet.replace(window.CustomBootstrapCSS ? window.CustomBootstrapCSS : BootstrapCSS);
         document.addEventListener('DOMContentLoaded',this.onLoad.bind(this));
     },
     onLoad(){
@@ -7658,15 +7645,19 @@ class BootstrapElementsNavItem extends HTMLElement {
     getStyleTemplate(){
         return `
         .tab-item {
-            ${BootstrapElementsCore.getStyle('.nav-tabs .nav-item').split('{')[1]}
-        .tab-item a {  ${BootstrapElementsCore.getStyle('.nav-tabs .nav-link').split('{')[1]}
-        .tab-item a.active {  ${BootstrapElementsCore.getStyle('.nav-tabs .nav-link.active').split('{')[1]}
-        .pill-item a.active {
-            ${BootstrapElementsCore.getStyle('.nav-pills .nav-link').split('{')[1]}
-        .pill-item a.active { ${BootstrapElementsCore.getStyle('.nav-pills .nav-link.active').split('{')[1]}
+            ${this.getStyleAsString('.nav-tabs .nav-item')}
+        .tab-item a {  ${this.getStyleAsString('.nav-tabs .nav-link')}
+        .tab-item a.active {  ${this.getStyleAsString('.nav-tabs .nav-link.active')}
+        .pill-item a.active { ${this.getStyleAsString('.nav-pills .nav-link')}
+        .pill-item a.active { ${this.getStyleAsString('.nav-pills .nav-link.active')}
         `;
         }
-        update() {
+    getStyleAsString(selector){
+       const styleString = BootstrapElementsCore.getStyle(selector);
+       if (styleString) return styleString.split('{')[1];
+       return '}';
+    }
+    update() {
         this.element.className = ` 
             nav-item
             ${this.tab === 'true' ? ` tab-item`: ''} 

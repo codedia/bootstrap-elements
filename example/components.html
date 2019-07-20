@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bootstrap Elements - Components</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="image/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/prism.css">
     <script src="jquery.min.js"></script>
@@ -22,6 +29,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="getting-started.html">Getting Started</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Components</a>
                 </li>
@@ -130,7 +140,13 @@ toggle&lt;/be-button&gt;
                                     </be-alert>
                                     <be-alert type="warning" dismissible="true">A warning dismissible alert
                                     </be-alert>
-                                    
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-alert type=&quot;primary&quot;&gt;A simple primary alert&lt;/be-alert&gt;
+&lt;be-alert type=&quot;secondary&quot;&gt;A simple secondary alert&lt;/be-alert&gt;
+&lt;be-alert type=&quot;warning&quot; dismissible=&quot;true&quot;&gt;A warning dismissible alert&lt;/be-alert&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                             </div>
                         </section>
@@ -151,6 +167,23 @@ toggle&lt;/be-button&gt;
                                          </div>
                                          </div>
                                     </be-carousel>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-carousel&gt;
+    &lt;div class=&quot;carousel-inner&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot;&gt;
+         &lt;div class=&quot;carousel-slide&quot;&gt;First Slide&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;div class=&quot;carousel-slide&quot;&gt;Second Slide&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;div class=&quot;carousel-slide&quot;&gt;Third Slide&lt;/div&gt;
+        &lt;/div&gt;    
+    &lt;/div&gt;
+&lt;/be-carousel&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                                 <div class="card-body">
                                     <h3>Crossfade</h3>
@@ -167,6 +200,23 @@ toggle&lt;/be-button&gt;
                                             </div>
                                         </div>
                                     </be-carousel>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-carousel crossfade=&quot;true&quot;&gt;
+    &lt;div class=&quot;carousel-inner&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot;&gt;
+            &lt;div class=&quot;carousel-slide&quot;&gt;First Slide&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;div class=&quot;carousel-slide&quot;&gt;Second Slide&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;div class=&quot;carousel-slide&quot;&gt;Third Slide&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/be-carousel&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                                 <div class="card-body">
                                     <h3>Navigation</h3>
@@ -193,6 +243,35 @@ toggle&lt;/be-button&gt;
                                              <span class="sr-only">Next</span>
                                          </a>
                                     </be-carousel>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-carousel&gt;
+&lt;div class=&quot;carousel-inner&quot;&gt;
+    &lt;div class=&quot;carousel-item active&quot;&gt;
+        &lt;div class=&quot;carousel-slide&quot;&gt;First Slide&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-slide&quot;&gt;Second Slide&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-slide&quot;&gt;Third Slide&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;a class=&quot;carousel-control-prev&quot; role=&quot;button&quot;
+data-slide=&quot;prev&quot;&gt;
+    &lt;span class=&quot;carousel-control-prev-icon&quot;
+    aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
+&lt;/a&gt;
+&lt;a class=&quot;carousel-control-next&quot; role=&quot;button&quot;
+data-slide=&quot;next&quot;&gt;
+    &lt;span class=&quot;carousel-control-next-icon&quot;
+    aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
+&lt;/a&gt;
+&lt;/be-carousel&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                                  <div class="card-body">
                                      <h3>Interval</h3>
@@ -209,6 +288,23 @@ toggle&lt;/be-button&gt;
                                              </div>
                                          </div>
                                      </be-carousel>
+                                     <pre class="language-html">
+                                        <code>
+&lt;be-carousel interval=&quot;500&quot;&gt;
+    &lt;div class=&quot;carousel-inner&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot;&gt;
+            &lt;div class=&quot;carousel-slide&quot;&gt;First Slide&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;div class=&quot;carousel-slide&quot;&gt;Second Slide&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;div class=&quot;carousel-slide&quot;&gt;Third Slide&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/be-carousel&gt;
+                                        </code>
+                                    </pre>
                                  </div>
                             </div>
                         </section>
@@ -227,6 +323,22 @@ toggle&lt;/be-button&gt;
                                             labore wes anderson cred nesciunt sapiente ea proident.
                                         </div>
                                     </be-collapsible>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-button toggletarget=&quot;collapseExample&quot;
+type=&quot;primary&quot;&gt;
+Button with `toggletarget`
+&lt;/be-button&gt;
+&lt;/be-collapsebutton&gt;
+&lt;be-collapsible collapseid=&quot;collapseExample&quot;&gt;
+    &lt;div class=&quot;card card-body&quot;&gt;
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+    terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+    labore wes anderson cred nesciunt sapiente ea proident.
+    &lt;/div&gt;
+&lt;/be-collapsible&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                             </div>
                             <div class="card">
@@ -322,6 +434,66 @@ toggle&lt;/be-button&gt;
                                         </div>
                                     </div>
                                     </be-wrapper>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-wrapper&gt;
+&lt;div class=&quot;accordion&quot; id=&quot;accordionExample&quot;&gt;
+&lt;div class=&quot;card&quot;&gt;
+&lt;div class=&quot;card-header&quot;&gt;
+&lt;h5 class=&quot;mb-0&quot;&gt;
+&lt;be-button toggletarget=&quot;collapseOne&quot; link=&quot;true&quot;&gt;
+Collapsible Group Item #1
+&lt;/be-button&gt;
+
+&lt;/h5&gt;
+&lt;/div&gt;
+&lt;be-collapsible collapseid=&quot;collapseOne&quot;
+show=&quot;true&quot;&gt;
+&lt;div&gt;
+&lt;div class=&quot;card-body&quot;&gt;
+...
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/be-collapible&gt;
+&lt;/div&gt;
+&lt;div class=&quot;card&quot;&gt;
+&lt;div class=&quot;card-header&quot;&gt;
+&lt;h5 class=&quot;mb-0&quot;&gt;
+&lt;be-button toggletarget=&quot;collapseTwo&quot; link=&quot;true&quot;&gt;
+Collapsible Group Item #2
+&lt;/be-button&gt;
+
+&lt;/h5&gt;
+&lt;/div&gt;
+&lt;be-collapsible collapseid=&quot;collapseTwo&quot;&gt;
+&lt;div aria-labelledby=&quot;headingTwo&quot;
+data-parent=&quot;#accordionExample&quot;&gt;
+&lt;div class=&quot;card-body&quot;&gt;
+...
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/be-collapible&gt;
+&lt;/div&gt;
+&lt;div class=&quot;card&quot;&gt;
+&lt;div class=&quot;card-header&quot;&gt;
+&lt;h5 class=&quot;mb-0&quot;&gt;
+&lt;be-button toggletarget=&quot;collapseThree&quot;
+link=&quot;true&quot;&gt;
+Collapsible Group Item #3
+&lt;/be-button&gt;
+
+&lt;/h5&gt;
+&lt;/div&gt;
+&lt;be-collapsible collapseid=&quot;collapseThree&quot;&gt;
+&lt;div aria-labelledby=&quot;headingOne&quot; data-...
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/be-collapible&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/be-wrapper&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                             </div>
 
@@ -554,7 +726,45 @@ toggle&lt;/be-button&gt;
                         </section>
                     </div>
                 </div>
-            </div>    
+            </div>  
+            <!-- Site footer -->
+            <footer class="site-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-9">
+                            <h6>About</h6>
+                            <p class="text-justify">Bootstrap Elements is designed to make Bootstrap components work
+                                within the shadow DOM. Bootstrap Elements are built using custom elements. The CSS is
+                                all from Bootstrap and the JS is leveraged from Bootstrap's JS API.</p>
+                        </div>
+
+                        <div class="col-xs-6 col-md-3">
+                            <h6>Quick Links</h6>
+                            <ul class="footer-links">
+                                <li><a href="getting-started.html">Getting Started</a></li>
+                                <li><a href="components.html">Components</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                            <p class="copyright-text">Copyright &copy; 2019 All Rights Reserved by
+                                <a href="#">Codedia</a>.
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <ul class="social-icons">
+                                <li><a class="github" href="https://github.com/codedia" target="_blank"><img
+                                            width="20px" style="filter: invert(100%);" src="image/github.svg"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
         
     </div>

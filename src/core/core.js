@@ -9,7 +9,7 @@ const BootstrapElementsCore = {
     coreSheet: new CSSStyleSheet(),
     subscriptions:{},
     init(){
-        this.sheet.replace(BootstrapCSS);
+        this.sheet.replace(window.CustomBootstrapCSS ? window.CustomBootstrapCSS : BootstrapCSS);
         document.addEventListener('DOMContentLoaded',this.onLoad.bind(this));
     },
     onLoad(){

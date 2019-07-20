@@ -14,12 +14,12 @@
     "bundle:js": "concat-glob-cli -f src/**/*.js -o dist/bootstrap-elements.js",
     "bundle:css": "copyfiles -f node_modules/jquery/dist/jquery.min.js node_modules/bootstrap/dist/css/bootstrap.min.css dist",
     "copy:bs": "copyfiles -f node_modules/bootstrap/dist/js/bootstrap.bundle.js src",
-    "copy:bs1": "copyfiles -f node_modules/bootstrap/js/dist/util.js node_modules/bootstrap/js/dist/alert.js src/bootstrap",
+    "copy:bs_css": "copyfiles -f node_modules/bootstrap/dist/css/bootstrap.min.css dist",
     "css-to-js": "node util/css-to-js.js node_modules/bootstrap/dist/css/bootstrap.min.css src/bootstrap-css.js",
     "watch:js": "onchange \"src/**/*\" -- run-s bundle:js reload",
     "watch:scss": "onchange \"style/**/*.scss\"  -- run-s sass reload",
     "watch:example": "onchange \"example/**/*\"  -- run-s reload",
-    "watch": "run-s clean:dist copy:bs bundle:* watch-serve"
+    "watch": "run-s clean:dist copy:* bundle:* watch-serve"
   },
   "repository": {
     "type": "git",

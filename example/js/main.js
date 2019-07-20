@@ -16,6 +16,7 @@ const Main = {
         link.classList.add('active');
         document.querySelector(`#${sectionId}`).classList.add('show');
         this.currentSection = sectionId;
+        document.querySelector('.main').scrollTo(0, 0);
     }
 }
 Main.init();
