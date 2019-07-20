@@ -6,8 +6,10 @@
     <title>Bootstrap Elements - Components</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/prism.css">
     <script src="jquery.min.js"></script>
     <script src="bootstrap-elements.js"></script>
+    <script src="js/prism.js"></script>
     <script src="js/main.js"></script>
 </head>
 <body class="component">
@@ -39,6 +41,7 @@
                 <a class="nav-link" section-toggle="scrollspy-section">Scrollspy</a>
                 <a class="nav-link" section-toggle="tooltip-section">Tooltip</a>
                 <a class="nav-link" section-toggle="nav-section">Nav</a>
+                <a class="nav-link" section-toggle="toast-section">Toast</a>
             </div>
         </sidebar>
         <div class="main">
@@ -49,60 +52,71 @@
                             <h3 class="h3">Buttons</h3>
                             <div class="card" >
                                 <div class="card-body">
-                                    <span class="example-text">EXAMPLE</span>
                                     <be-button type="primary">primary</be-button>
                                     <be-button type="secondary">secondary</be-button>
                                     <be-button type="success">success</be-button>
                                     <be-button type="danger">danger</be-button>
                                     <be-button type="warning">warning</be-button>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-button type=&quot;primary&quot;&gt;primary&lt;/be-button&gt;
+&lt;be-button type=&quot;secondary&quot;&gt;secondary&lt;/be-button&gt;
+&lt;be-button type=&quot;success&quot;&gt;success&lt;/be-button&gt;
+&lt;be-button type=&quot;danger&quot;&gt;danger&lt;/be-button&gt;
+&lt;be-button type=&quot;warning&quot;&gt;warning&lt;/be-button&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                                 <div class="card-body">
-                                    <span class="example-text">EXAMPLE</span>
                                     <be-button type="primary" size="lg">primary</be-button>
                                     <be-button type="secondary" size="sm">secondary</be-button>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-button type=&quot;primary&quot; size=&quot;lg&quot;&gt;primary&lt;/be-button&gt;
+&lt;be-button type=&quot;secondary&quot; size=&quot;sm&quot;&gt;secondary&lt;/be-button&gt;
+                                        </code>
                                 </div>
                                 <div class="card-body">
-                                    <span class="example-text">EXAMPLE</span>
                                     <be-button type="primary" size="lg" block="true">primary</be-button>
                                     <be-button type="secondary" size="sm" block="true">secondary</be-button>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-button type=&quot;primary&quot; size=&quot;lg&quot; block=&quot;true&quot;&gt;primary&lt;/be-button&gt;
+&lt;be-button type=&quot;secondary&quot; size=&quot;sm&quot; block=&quot;true&quot;&gt;secondary&lt;/be-button&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                                 <div class="card-body">
-                                    <span class="example-text">EXAMPLE</span>
                                     <be-button type="primary" active="true">primary</be-button>
                                     <be-button type="secondary" active="true">secondary</be-button>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-button type=&quot;primary&quot;
+active=&quot;true&quot;&gt;primary&lt;/be-button&gt;
+&lt;be-button type=&quot;secondary&quot;
+active=&quot;true&quot;&gt;secondary&lt;/be-button&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                                 <div class="card-body">
-                                    <span class="example-text">EXAMPLE</span>
                                     <be-button type="primary"  disabled>primary</be-button>
                                     <be-button type="secondary" disabled>secondary</be-button>
+                                     <pre class="language-html">
+                                        <code>
+&lt;be-button type=&quot;primary&quot; disabled&gt;primary&lt;/be-button&gt;
+&lt;be-button type=&quot;secondary&quot;
+disabled&gt;secondary&lt;/be-button&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                                 <div class="card-body">
-                                    <span class="example-text">EXAMPLE</span>
                                     <be-button type="primary" toggle="true">single toggle</be-button>
-                                </div>
-                                 <div class="card-body">
-                                     <span class="example-text">EXAMPLE</span>
-                                     <be-wrapper>
-                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                             <label class="btn btn-secondary active">
-                                                 <input type="radio" name="options" id="option1" autocomplete="off"
-                                                     checked> Active
-                                             </label>
-                                             <label class="btn btn-secondary">
-                                                 <input type="radio" name="options" id="option2" autocomplete="off">
-                                                 Radio
-                                             </label>
-                                             <label class="btn btn-secondary">
-                                                 <input type="radio" name="options" id="option3" autocomplete="off">
-                                                 Radio
-                                             </label>
-                                         </div>
-                                     </be-wrapper>
-
-                                      <be-buttongroup>
-                                        <be-button>active</be-button>    
-                                        <be-button>secondary</be-button>    
-                                      </be-buttongroup>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-button type=&quot;primary&quot; toggle=&quot;true&quot;&gt;single
+toggle&lt;/be-button&gt;
+                                        </code>
+                                    </pre>    
                                 </div>
                             </div>
                         </section>
@@ -512,6 +526,31 @@
                                 <be-tabpane paneid="tabpane2">hello world 2</be-tabpane>
                                 <be-tabpane paneid="tabpane3">hello world 3</be-tabpane>
                             </be-tabcontent>
+                        </section>
+                        <section id="toast-section">
+                            <h3 class="h3">Toast</h3>
+                            <be-toast show="true">
+                                <div slot="header">
+                                    <strong class="mr-auto">Bootstrap</strong>
+                                    <small>11 mins ago</small>
+                                </div>
+                                <div slot="body">
+                                    Hello, world! This is a toast message.
+                                </div>
+                            </be-toast>
+                                <pre>
+                                    <code class="language-html">
+&lt;be-toast show=&quot;true&quot;&gt;
+    &lt;div slot=&quot;header&quot;&gt;
+        &lt;strong class=&quot;mr-auto&quot;&gt;Bootstrap&lt;/strong&gt;
+        &lt;small&gt;11 mins ago&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;div slot=&quot;body&quot;&gt;
+        Hello, world! This is a toast message.
+    &lt;/div&gt;
+&lt;/be-toast&gt;
+                                    </code>
+                                </pre>
                         </section>
                     </div>
                 </div>

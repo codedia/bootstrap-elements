@@ -36,7 +36,6 @@ class BootstrapElementsNavItem extends HTMLElement {
     }
     addListeners() {
         this.element.addEventListener('click', this.onClick);
-       // BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_SHOW_TABPANE, this.onTabChange, this);
     }
     onTabChange = (event) => {
         if(this.tagertid) {

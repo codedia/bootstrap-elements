@@ -26,4 +26,11 @@ const CoreStyle = `
     .padding-0{
         padding:0;
     }
+    .toast-header slot, .toast-body slot {
+        width: 100%;
+        display: block;
+    }
+    .popover-header{
+        color: var(--gray-dark);
+    }
 `;
