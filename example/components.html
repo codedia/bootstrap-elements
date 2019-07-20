@@ -36,6 +36,9 @@
                 <a class="nav-link" section-toggle="dropdown-section">Dropdown</a>
                 <a class="nav-link" section-toggle="modal-section">Modal</a>
                 <a class="nav-link" section-toggle="popover-section">Popover</a>
+                <a class="nav-link" section-toggle="scrollspy-section">Scrollspy</a>
+                <a class="nav-link" section-toggle="tooltip-section">Tooltip</a>
+                <a class="nav-link" section-toggle="nav-section">Nav</a>
             </div>
         </sidebar>
         <div class="main">
@@ -358,6 +361,157 @@
                                         <be-button type="primary" toggletarget="popover" popoverplacement="top" popovercontent="content" popovertitle="popover title" >Click to toggle popover</be-button>
                                 </div>
                             </div>
+                        </section>
+                        <section id="scrollspy-section">
+                            <be-scrollspy target="navbar-example2">
+                            <nav id="navbar-example2" class="navbar navbar-light bg-light">
+                                <a class="navbar-brand" href="#">Navbar</a>
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#fat">@fat</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#mdo">@mdo</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+                                            role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#one">one</a>
+                                            <a class="dropdown-item" href="#one">one</a>
+                                            <a class="dropdown-item" href="#two">two</a>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#three">three</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" style=" height: 300px;overflow-y: auto;">
+                                <h4 id="fat">@fat</h4>
+                                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
+
+</p>
+                                <h4 id="mdo">@mdo</h4>
+                                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
+
+</p>
+                                <h4 id="one">one</h4>
+                                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
+
+</p>
+                                <h4 id="two">two</h4>
+                                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
+
+</p>
+                                <h4 id="three">three</h4>
+                                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
+
+</p>
+                            </div>
+                            </be-scrollspy>
+                        </section>
+                        <section id="tooltip-section" style="margin-top: 50px">
+                            <be-tooltip placement="top" title="Tooltip on top">
+                                <button type="button" class="btn btn-secondary" >
+                                    Tooltip on top
+                                </button>
+                            </be-tooltip>
+                            <be-tooltip placement="right" title="Tooltip on right">
+                                <button type="button" class="btn btn-secondary">
+                                    Tooltip on right
+                                </button>
+                            </be-tooltip>
+                            <be-tooltip placement="bottom" title="Tooltip on bottom">
+                                <button type="button" class="btn btn-secondary">
+                                    Tooltip on bottom
+                                </button>
+                            </be-tooltip>
+                            <be-tooltip placement="left" title="Tooltip on left">
+                                <button type="button" class="btn btn-secondary">
+                                    Tooltip on left
+                                </button>
+                            </be-tooltip>
+                        </section>
+                        <section id="nav-section">
+                            <h3 class="h3">Nav</h3>
+                            <be-nav>
+                                <be-navitem>item 1</be-navitem>
+                                <be-navitem>item 2</be-navitem>
+                                <be-navitem>item 3</be-navitem>
+                                <be-navitem disabled="true">item 4</be-navitem>
+                            </be-nav>
+                            <be-nav justifycontent="center">
+                                <be-navitem>item 1</be-navitem>
+                                <be-navitem>item 2</be-navitem>
+                                <be-navitem>item 3</be-navitem>
+                                <be-navitem disabled="true">item 4</be-navitem>
+                            </be-nav>
+                            <be-nav justifycontent="end">
+                                <be-navitem>item 1</be-navitem>
+                                <be-navitem>item 2</be-navitem>
+                                <be-navitem>item 3</be-navitem>
+                                <be-navitem disabled="true">item 4</be-navitem>
+                            </be-nav>
+                            <be-nav flexcolumn="true">
+                                <be-navitem>item 1</be-navitem>
+                                <be-navitem>item 2</be-navitem>
+                                <be-navitem>item 3</be-navitem>
+                                <be-navitem disabled="true">item 4</be-navitem>
+                            </be-nav>
+                            <be-nav tabs="true">
+                                <be-navitem active="true" tab="true">item 1</be-navitem>
+                                <be-navitem tab="true">item 2</be-navitem>
+                                <be-navitem tab="true">item 3</be-navitem>
+                                <be-navitem disabled="true" tab="true">item 4</be-navitem>
+                            </be-nav>
+                            <br>
+                            <be-nav pills="true">
+                                <be-navitem active="true" pill="true">item 1</be-navitem>
+                                <be-navitem pill="true">item 2</be-navitem>
+                                <be-navitem pill="true">item 3</be-navitem>
+                                <be-navitem disabled="true" pill="true">item 4</be-navitem>
+                            </be-nav>
+                            <br>
+                            <be-nav pills="true" fill="true">
+                                <be-navitem active="true" pill="true" fill="true">item 1</be-navitem>
+                                <be-navitem pill="true" fill="true">item 2</be-navitem>
+                                <be-navitem pill="true" fill="true">item 3</be-navitem>
+                                <be-navitem disabled="true" pill="true" fill="true">item 4</be-navitem>
+                            </be-nav>
+                            <br>
+                            <be-nav pills="true" fill="true">
+                                <be-navitem active="true" pill="true" fill="true" justified="true">item 1</be-navitem>
+                                <be-navitem pill="true" fill="true" justified="true">item 2</be-navitem>
+                                <be-navitem pill="true" fill="true" justified="true">item 3<br>much longer</be-navitem>
+                                <be-navitem disabled="true" pill="true" fill="true" justified="true">item 4</be-navitem>
+                            </be-nav>
+                            <be-nav tabs="true">
+                                <be-navitem active="true" tab="true">item 1</be-navitem>
+                                <be-navitem tab="true">
+                                    <be-dropdown>
+                                        <be-button type="link" dropdown="true" nopadding="true" toggletarget="dropdownmenu">item 2</be-button>
+                                        <be-dropdownmenu toggleid="dropdownmenu">
+                                            <a class="dropdown-item" href="#"
+                                                onclick="console.log('link clicked')">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </be-dropdownmenu>
+                                    </be-dropdown>
+                                </be-navitem>
+                                <be-navitem tab="true">item 3</be-navitem>
+                                <be-navitem disabled="true" tab="true">item 4</be-navitem>
+                            </be-nav>
+                            <be-nav tabs="true">
+                                <be-navitem active="true" tab="true" tagertid="tabpane1">item 1</be-navitem>
+                                <be-navitem tab="true" tagertid="tabpane2">item 2</be-navitem>
+                                <be-navitem tab="true" tagertid="tabpane3">item 3</be-navitem>
+                                <be-navitem disabled="true" tab="true" tagertid="tabpane4">item 4</be-navitem>
+                            </be-nav>
+                            <be-tabcontent tabpaneid="tabpane1">
+                                <be-tabpane paneid="tabpane1" show="true">hello world 1</be-tabpane>
+                                <be-tabpane paneid="tabpane2">hello world 2</be-tabpane>
+                                <be-tabpane paneid="tabpane3">hello world 3</be-tabpane>
+                            </be-tabcontent>
                         </section>
                     </div>
                 </div>

@@ -14,6 +14,8 @@ class BootstrapElementsButton extends HTMLElement {
             'popovercontent',
             'popovertitle',
             'popovertrigger',
+            'dropdown',
+            'nopadding',
         ];
     }
     constructor(){
@@ -33,6 +35,8 @@ class BootstrapElementsButton extends HTMLElement {
             popovercontent: '',
             popovertitle: '',
             popovertrigger: '',
+            dropdown: '',
+            nopadding: '',
         });
         this.onToggleHanlder = this.onToggle.bind(this);
     }
@@ -72,6 +76,8 @@ class BootstrapElementsButton extends HTMLElement {
                 ${this.block === 'true' ? ` btn-block`: ''} 
                 ${this.link === 'true' ? ` btn-link`: ''} 
                 ${this.toggle || this.active === 'true' ? ` active`: ''} 
+                ${this.dropdown || this.dropdown === 'true' ? ` dropdown-toggle`: ''} 
+                ${this.nopadding || this.nopadding === 'true' ? ` padding-0`: ''} 
             `;
 
             button.disabled = this.isDisabled();

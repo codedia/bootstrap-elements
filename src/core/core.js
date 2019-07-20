@@ -1,6 +1,7 @@
 const BootstrapElementsCore = {
     EVENTS:{
         BOOTSTRAP_ELEMENTS_TOGGLE: 'BOOTSTRAP_ELEMENTS_TOGGLE',
+        BOOTSTRAP_ELEMENTS_SHOW_TABPANE: 'BOOTSTRAP_ELEMENTS_SHOW_TABPANE',
     },
     STYLE_ID:'bootstrap-elements-style',
     CORE_STYLE_ID:'bootstrap-elements-core-style',
@@ -22,6 +23,14 @@ const BootstrapElementsCore = {
         style.innerHTML = innerHTML;
         document.head.appendChild(style);
 
+    },
+    getStyle(className) {
+        var classes = this.sheet.rules || this.sheet.cssRules;
+        for (var x = 0; x < classes.length; x++) {
+            if (classes[x].selectorText && classes[x].selectorText.indexOf(className) >= 0) {
+                return (classes[x].cssText) ? (classes[x].cssText) : (classes[x].style.cssText);
+            }
+        }
     },
     unsubscribe(eventName,_element){
         if (!this.subscriptions[eventName]) return;

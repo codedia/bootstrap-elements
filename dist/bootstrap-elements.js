@@ -7142,6 +7142,8 @@ class BootstrapElementsButton extends HTMLElement {
             'popovercontent',
             'popovertitle',
             'popovertrigger',
+            'dropdown',
+            'nopadding',
         ];
     }
     constructor(){
@@ -7161,6 +7163,8 @@ class BootstrapElementsButton extends HTMLElement {
             popovercontent: '',
             popovertitle: '',
             popovertrigger: '',
+            dropdown: '',
+            nopadding: '',
         });
         this.onToggleHanlder = this.onToggle.bind(this);
     }
@@ -7200,6 +7204,8 @@ class BootstrapElementsButton extends HTMLElement {
                 ${this.block === 'true' ? ` btn-block`: ''} 
                 ${this.link === 'true' ? ` btn-link`: ''} 
                 ${this.toggle || this.active === 'true' ? ` active`: ''} 
+                ${this.dropdown || this.dropdown === 'true' ? ` dropdown-toggle`: ''} 
+                ${this.nopadding || this.nopadding === 'true' ? ` padding-0`: ''} 
             `;
 
             button.disabled = this.isDisabled();
@@ -7360,6 +7366,7 @@ customElements.define('be-collapsible', BootstrapElementsCollapsible);
 const BootstrapElementsCore = {
     EVENTS:{
         BOOTSTRAP_ELEMENTS_TOGGLE: 'BOOTSTRAP_ELEMENTS_TOGGLE',
+        BOOTSTRAP_ELEMENTS_SHOW_TABPANE: 'BOOTSTRAP_ELEMENTS_SHOW_TABPANE',
     },
     STYLE_ID:'bootstrap-elements-style',
     CORE_STYLE_ID:'bootstrap-elements-core-style',
@@ -7381,6 +7388,14 @@ const BootstrapElementsCore = {
         style.innerHTML = innerHTML;
         document.head.appendChild(style);
 
+    },
+    getStyle(className) {
+        var classes = this.sheet.rules || this.sheet.cssRules;
+        for (var x = 0; x < classes.length; x++) {
+            if (classes[x].selectorText && classes[x].selectorText.indexOf(className) >= 0) {
+                return (classes[x].cssText) ? (classes[x].cssText) : (classes[x].style.cssText);
+            }
+        }
     },
     unsubscribe(eventName,_element){
         if (!this.subscriptions[eventName]) return;
@@ -7412,6 +7427,21 @@ const CoreStyle = `
     }
     .overflow-hidden {
         overflow:hidden;
+    }
+    be-navitem[fill], .nav-item-fill {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+    .nav-item-justified {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        text-align: center;
+        height:100%;
+    }
+    .padding-0{
+        padding:0;
     }
 `;
 class BootstrapElementsDropdownMenu extends HTMLElement {
@@ -7554,6 +7584,147 @@ class BootstrapElementsModal extends HTMLElement {
     }
 }
 customElements.define('be-modal', BootstrapElementsModal);
+class BootstrapElementsNavItem extends HTMLElement {
+    static get observedAttributes() {
+        return ['active', 'disabled', 'tab', 'pill', 'fill', 'justified', 'tagertid'];
+    }
+    constructor() {
+        super();
+        this.fragment = document.createDocumentFragment();
+        this.element = document.createElement('li');
+        this.styleElement = document.createElement('style');
+        CustomElementHelper.setProperties(this, {
+            active: 'false',
+            disabled: 'false',
+            tab: 'false',
+            pill: 'false',
+            fill: 'false',
+            justified: 'false',
+            tagertid: '',
+        });
+    }
+    connectedCallback() {
+        let shadowRoot = this.attachShadow({
+            mode: 'open'
+        });
+        this.fragment.appendChild(this.element);
+        shadowRoot.appendChild(this.styleElement);
+        shadowRoot.appendChild(this.fragment);
+        shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
+        this.element.innerHTML = this.getTemplate();
+        this.styleElement.innerHTML = this.getStyleTemplate();
+        this.update();
+        this.addListeners();
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[name] = newValue;
+        this.update();
+    }
+    addListeners() {
+        this.element.addEventListener('click', this.onClick);
+       // BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_SHOW_TABPANE, this.onTabChange, this);
+    }
+    onTabChange = (event) => {
+        if(this.tagertid) {
+            this.active = event.id === this.tagertid ? 'true' : 'false';
+            this.update();
+        }
+    }
+    onClick = () => {
+        BootstrapElementsCore.dispatch(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_SHOW_TABPANE, {
+            id: this.tagertid,
+            button: this,
+        });
+    }
+    getStyleTemplate(){
+        return `
+        .tab-item {
+            ${BootstrapElementsCore.getStyle('.nav-tabs .nav-item').split('{')[1]}
+        .tab-item a {  ${BootstrapElementsCore.getStyle('.nav-tabs .nav-link').split('{')[1]}
+        .tab-item a.active {  ${BootstrapElementsCore.getStyle('.nav-tabs .nav-link.active').split('{')[1]}
+        .pill-item a.active {
+            ${BootstrapElementsCore.getStyle('.nav-pills .nav-link').split('{')[1]}
+        .pill-item a.active { ${BootstrapElementsCore.getStyle('.nav-pills .nav-link.active').split('{')[1]}
+        `;
+        }
+        update() {
+        this.element.className = ` 
+            nav-item
+            ${this.tab === 'true' ? ` tab-item`: ''} 
+            ${this.pill === 'true' ? ` pill-item`: ''} 
+            ${this.fill === 'true' ? ` nav-item-fill`: ''} 
+            ${this.justified === 'true' ? ` nav-item-justified`: ''} 
+            `;
+            const aTag = this.element.querySelector('a');
+            if (aTag) {
+                aTag.className = `
+                nav-link
+                ${this.active === 'true' ? ` active`: ''} 
+                ${this.disabled === 'true' ? ` disabled`: ''} 
+                ${this.justified === 'true' ? ` nav-item-justified`: ''} 
+        `;
+        }
+    }
+    getTemplate() {
+        return `
+                <a class="nav-link" href="#"><slot/></a>
+        `
+    }
+}
+customElements.define('be-navitem', BootstrapElementsNavItem);
+class BootstrapElementsNav extends HTMLElement {
+    static get observedAttributes() {
+        return ['justifycontent','flexcolumn', 'tabs', 'pills', 'fill'];
+    }
+    constructor() {
+        super();
+        this.fragment = document.createDocumentFragment();
+        this.element = document.createElement('ul');
+        CustomElementHelper.setProperties(this, {
+            justifycontent: '',
+            flexcolumn: 'false',
+            tabs: 'false',
+            pills: 'false',
+            fill: 'false',
+        });
+    }
+    connectedCallback() {
+        let shadowRoot = this.attachShadow({
+            mode: 'open'
+        });
+        this.fragment.appendChild(this.element);
+        shadowRoot.appendChild(this.fragment);
+        shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
+        this.element.innerHTML = this.getTemplate();
+        this.update();
+        this.addListeners();
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[name] = newValue;
+        this.update();
+    }
+    addListeners() {
+    }
+    update() {
+        if (this.element) {
+            
+            this.element.className = `
+                nav
+                ${this.justifycontent ? ` justify-content-${this.justifycontent}` : ''}
+                ${this.flexcolumn === 'true' ? ` flex-column` : ''}
+                ${this.tabs === 'true' ? ` nav-tabs` : ''}
+                ${this.pills === 'true' ? ` nav-pills` : ''}
+                ${this.fill === 'true' ? ` nav-fill` : ''}
+            `;
+
+        }
+    }
+    getTemplate() {
+        return `<slot/>
+        `
+    }
+}
+customElements.define('be-nav', BootstrapElementsNav);
 const BootstrapElementsPopover = {
     init(){
         window.addEventListener('DOMContentLoaded', this.onLoad.bind(this))
@@ -7583,6 +7754,199 @@ const BootstrapElementsPopover = {
     
 };
 BootstrapElementsPopover.init();
+class BootstrapElementsScrollSpy extends HTMLElement {
+    static get observedAttributes() {
+        return ['target'];
+    }
+    constructor() {
+            super();
+            CustomElementHelper.setProperties(this, {
+                target: ''
+            });
+            // $(this).scrollspy({
+            //     target: `#${this.target}`
+            // })
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[name] = newValue;
+    }
+}
+customElements.define('be-scrollspy', BootstrapElementsScrollSpy);
+class BootstrapElementsTabContent extends HTMLElement {
+    static get observedAttributes() {
+        return ['tabpaneid'];
+    }
+    constructor() {
+        super();
+        this.fragment = document.createDocumentFragment();
+        this.element = document.createElement('div');
+        CustomElementHelper.setProperties(this, {
+            tabpaneid: '',
+        });
+    }
+    connectedCallback() {
+        let shadowRoot = this.attachShadow({
+            mode: 'open'
+        });
+         this.fragment.appendChild(this.element);
+         shadowRoot.appendChild(this.fragment);
+        shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
+        this.element.innerHTML = this.getTemplate();
+        this.update();
+        this.element.querySelector('slot').addEventListener('slotchange', this.onSlotChange);
+         BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_SHOW_TABPANE, this.onShowTab, this);
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[name] = newValue;
+        this.update();
+        if (name === 'tabpaneid' && oldValue !== newValue)
+        BootstrapElementsCore.dispatch(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_SHOW_TABPANE, {
+            id: this.tabpaneid,
+        });
+    }
+    onShowTab = (event) => {
+        const slot = this.element.querySelector('slot');
+        if(slot) {
+            const elements = this.element.querySelector('slot').assignedElements();
+            if(elements) {
+                const hasChild = elements.find(pane => pane.getAttribute('paneid') === event.id);
+                if(!hasChild) return;
+                elements.forEach((pane) => {
+                    const paneId = pane.getAttribute('paneid');
+                    if(paneId) {
+                        if (paneId && event.id === paneId) {
+                            pane.setAttribute('show', 'true');
+                            event.button.parentNode.childNodes.forEach(button => {
+                                if(button.active === 'true')  button.active = 'false';
+                                if (button.tagertid === event.id) button.active = 'true';
+                            });
+                            
+                        } else {
+                            pane.setAttribute('show', 'false');
+                        }
+                    }
+                });
+            }
+        }
+        
+    }
+    onSlotChange = () => {
+        const elements = this.element.querySelector('slot').assignedElements;
+        
+    }
+    update() {
+            this.element.className = `
+                tab-content
+            `;
+    }
+    getTemplate() {
+        return `
+                <slot></slot>
+        `
+    }
+}
+customElements.define('be-tabcontent', BootstrapElementsTabContent);
+class BootstrapElementsTabPane extends HTMLElement {
+    static get observedAttributes() {
+        return ['active', 'fade', 'show', 'paneid'];
+    }
+    constructor() {
+        super();
+        this.fragment = document.createDocumentFragment();
+        this.element = document.createElement('div');
+        this.isActive = false;
+        CustomElementHelper.setProperties(this, {
+            active: 'false',
+            fade: 'false',
+            show: 'false',
+            paneid: ''
+        });
+    }
+    connectedCallback() {
+        let shadowRoot = this.attachShadow({
+            mode: 'open'
+        });
+         this.fragment.appendChild(this.element);
+         shadowRoot.appendChild(this.fragment);
+        shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
+        this.element.innerHTML = this.getTemplate();
+        this.update();
+       
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[name] = newValue;
+        this.update();
+    }
+    
+    update() {
+            this.element.className = `
+                tab-pane
+                ${this.show === 'true' || this.isActive ? ` show`: ' hide'} 
+                ${this.active === 'true' ? ` active`: ''} 
+                ${this.fade === 'true' ? ` fade`: ''} 
+            `;
+    }
+    getTemplate() {
+        return `
+                <slot></slot>
+        `
+    }
+}
+customElements.define('be-tabpane', BootstrapElementsTabPane);
+class BootstrapElementsTooltip extends HTMLElement {
+    static get observedAttributes() {
+        return ['title', 'placement', 'template', 'trigger'];
+    }
+    constructor() {
+        super();
+        this.childElement = null;
+        this.fragment = document.createDocumentFragment();
+        this.element = document.createElement('slot');
+        CustomElementHelper.setProperties(this, {
+            title: '',
+            placement: 'auto',
+            template: '',
+            trigger: '',
+        });
+    }
+    connectedCallback() {
+        let shadowRoot = this.attachShadow({
+            mode: 'open'
+        });
+        this.fragment.appendChild(this.element);
+        shadowRoot.appendChild(this.fragment);
+        shadowRoot.adoptedStyleSheets = [BootstrapElementsCore.sheet, BootstrapElementsCore.coreSheet];
+        this.update();
+        this.addListeners();
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[name] = newValue;
+        this.update();
+    }
+    update(){
+        if(this.childElement){
+             const options = {
+                 container: 'body',
+                 title: this.title,
+                 placement: this.placement ? this.placement : null,
+             }
+             if (this.trigger) options.trigger = this.trigger;
+             if (this.template) options.template = this.template;
+             $(this.childElement).tooltip(options);
+            }
+    }
+    addListeners() {
+       this.element.addEventListener('slotchange', this.onSlotChange);
+    }
+    onSlotChange = () =>{
+        const elements = this.element.assignedElements();
+        if(elements){
+           this.childElement = elements[0];
+           this.update();
+        }
+    }
+}
+customElements.define('be-tooltip', BootstrapElementsTooltip);
 const CustomElementHelper = {
     setProperties(element, defaultValues) {
         if (defaultValues) {
