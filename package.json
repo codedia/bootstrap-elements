@@ -18,7 +18,7 @@
     "reload": "browser-sync reload",
     "sass": "node-sass style/main.scss dist/css/style.css",
     "watch-serve": "run-p serve watch:*",
-    "bundle:js": "concat-glob-cli -f src/**/*.js -o dist/bootstrap-elements.js",
+    "bundle:js": "concat-glob-cli -f \"src/**/*.js\" -o dist/bootstrap-elements.js",
     "bundle:css": "copyfiles -f node_modules/jquery/dist/jquery.min.js node_modules/bootstrap/dist/css/bootstrap.min.css dist",
     "copy:bs": "copyfiles -f node_modules/bootstrap/dist/js/bootstrap.bundle.js src",
     "copy:bs_css": "copyfiles -f node_modules/bootstrap/dist/css/bootstrap.min.css dist",
