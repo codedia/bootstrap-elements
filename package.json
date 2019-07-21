@@ -9,7 +9,7 @@
     "build": "run-s clean:dist version:src copy:* bundle:* version:dist ",
     "deploy:build": "run-s clean:dist version:src copy:* bundle:* version:dist ",
     "deploy": "run-s clean:site deploy:build deploy:copy",
-    "deploy:copy": "copyfiles -u 1 dist/**/* example/**/*  site",
+    "deploy:copy": "copyfiles -u 1 ./dist/**/* ./example/**/* ./site && echo 'site files copied.'",
     "lint": "eslint src/**/*.js",
     "minifiy": "minify dist/bootstrap-elements.js",
     "version:src": "node util/version.js",
