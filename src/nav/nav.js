@@ -37,17 +37,17 @@ class BootstrapElementsNav extends HTMLElement {
             this.element.className = `
                 nav
                 ${this.justifycontent ? ` justify-content-${this.justifycontent}` : ''}
-                ${this.flexcolumn === 'true' ? ` flex-column` : ''}
-                ${this.tabs === 'true' ? ` nav-tabs` : ''}
-                ${this.pills === 'true' ? ` nav-pills` : ''}
-                ${this.fill === 'true' ? ` nav-fill` : ''}
+                ${this.flexcolumn === 'true' ? ' flex-column' : ''}
+                ${this.tabs === 'true' ? ' nav-tabs' : ''}
+                ${this.pills === 'true' ? ' nav-pills' : ''}
+                ${this.fill === 'true' ? ' nav-fill' : ''}
             `;
 
         }
     }
     getTemplate() {
         return `<slot/>
-        `
+        `;
     }
 }
 customElements.define('be-nav', BootstrapElementsNav);

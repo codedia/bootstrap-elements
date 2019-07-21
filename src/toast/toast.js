@@ -46,7 +46,7 @@ class BootstrapElementsToast extends HTMLElement {
     update() {
          this.element.className = ` 
             toast
-            ${this.show === 'true' ? ` show`: ''} 
+            ${this.show === 'true' ? ' show': ''} 
             `;
     }
     addListeners() {

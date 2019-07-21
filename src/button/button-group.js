@@ -21,12 +21,12 @@ class BootstrapElementsButtonGroup extends HTMLElement {
         this.update();
     }
     update(){
-        this.element.className = `btn-group btn-group-toggle`;
+        this.element.className = 'btn-group btn-group-toggle';
     }
     getTemplate() {
         return `
             <slot/>
-        `
+        `;
     }
 }
 customElements.define('be-buttongroup', BootstrapElementsButtonGroup);

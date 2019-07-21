@@ -48,7 +48,7 @@
                 <a class="nav-link" section-toggle="dropdown-section">Dropdown</a>
                 <a class="nav-link" section-toggle="modal-section">Modal</a>
                 <a class="nav-link" section-toggle="popover-section">Popover</a>
-                <a class="nav-link" section-toggle="scrollspy-section">Scrollspy</a>
+                <!-- <a class="nav-link" section-toggle="scrollspy-section">Scrollspy</a> -->
                 <a class="nav-link" section-toggle="tooltip-section">Tooltip</a>
                 <a class="nav-link" section-toggle="nav-section">Nav</a>
                 <a class="nav-link" section-toggle="toast-section">Toast</a>
@@ -510,6 +510,18 @@ Collapsible Group Item #3
                                              <a class="dropdown-item" href="#">Something else here</a>
                                          </be-dropdownmenu>
                                     </be-dropdown>
+                                     <pre class="language-html">
+                                        <code>
+&lt;be-dropdown&gt;
+    &lt;be-button type=&quot;primary&quot; toggletarget=&quot;dropdownmenu&quot;&gt;primary&lt;/be-button&gt;
+        &lt;be-dropdownmenu toggleid=&quot;dropdownmenu&quot;&gt;
+            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot; onclick=&quot;console.log(&apos;link clicked&apos;)&quot;&gt;Action&lt;/a&gt;
+            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;
+            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;
+        &lt;/be-dropdownmenu&gt;
+&lt;/be-dropdown&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                             </div>
                         </section>
@@ -537,6 +549,30 @@ Collapsible Group Item #3
                                             </div>
                                         </div>
                                     </be-modal>
+                                    <pre class="language-html">
+                                        <code>
+&lt;be-button toggletarget=&quot;modal1&quot; type=&quot;primary&quot;&gt;show modal&lt;/be-button&gt; 
+&lt;be-modal toggleid=&quot;modal1&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot; role=&quot;document&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h5 class=&quot;modal-title&quot;&gt;Modal title&lt;/h5&gt;
+                &lt;be-button toggletarget=&quot;modal1&quot;  close=&quot;true&quot;&gt;
+                    &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                &lt;/be-button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;p&gt;Modal body text goes here.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;be-button toggletarget=&quot;modal1&quot; type=&quot;secondary&quot;&gt;Close&lt;/be-button&gt;
+                &lt;be-button type=&quot;primary&quot;&gt;Save&lt;/be-button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/be-modal&gt;
+                                        </code>
+                                    </pre>
                                 </div>
                             </div>
                         </section>
@@ -545,10 +581,15 @@ Collapsible Group Item #3
                             <div class="card">
                                 <div class="card-body">
                                         <be-button type="primary" toggletarget="popover" popoverplacement="top" popovercontent="content" popovertitle="popover title" >Click to toggle popover</be-button>
+                                        <pre class="language-html">
+                                            <code>
+&lt;be-button type=&quot;primary&quot; toggletarget=&quot;popover&quot; popoverplacement=&quot;top&quot; popovercontent=&quot;content&quot; popovertitle=&quot;popover title&quot; &gt;Click to toggle popover&lt;/be-button&gt;
+                                            </code>
+                                        </pre>
                                 </div>
                             </div>
                         </section>
-                        <section id="scrollspy-section">
+                        <!-- <section id="scrollspy-section">
                             <be-scrollspy target="navbar-example2">
                             <nav id="navbar-example2" class="navbar navbar-light bg-light">
                                 <a class="navbar-brand" href="#">Navbar</a>
@@ -595,7 +636,7 @@ Collapsible Group Item #3
 </p>
                             </div>
                             </be-scrollspy>
-                        </section>
+                        </section> -->
                         <section id="tooltip-section" style="margin-top: 50px">
                             <be-tooltip placement="top" title="Tooltip on top">
                                 <button type="button" class="btn btn-secondary" >
@@ -617,60 +658,176 @@ Collapsible Group Item #3
                                     Tooltip on left
                                 </button>
                             </be-tooltip>
+                            <pre class="language-html">
+                                <code>
+&lt;be-tooltip placement=&quot;top&quot; title=&quot;Tooltip on top&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; &gt;
+        Tooltip on top
+    &lt;/button&gt;
+&lt;/be-tooltip&gt;
+&lt;be-tooltip placement=&quot;right&quot; title=&quot;Tooltip on right&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;
+        Tooltip on right
+    &lt;/button&gt;
+&lt;/be-tooltip&gt;
+&lt;be-tooltip placement=&quot;bottom&quot; title=&quot;Tooltip on bottom&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;
+        Tooltip on bottom
+    &lt;/button&gt;
+&lt;/be-tooltip&gt;
+&lt;be-tooltip placement=&quot;left&quot; title=&quot;Tooltip on left&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;
+        Tooltip on left
+    &lt;/button&gt;
+&lt;/be-tooltip&gt;
+                                </code>
+                            </pre>
                         </section>
                         <section id="nav-section">
                             <h3 class="h3">Nav</h3>
+                            <h4 class="display-4">Basic Nav</h4>
                             <be-nav>
                                 <be-navitem>item 1</be-navitem>
                                 <be-navitem>item 2</be-navitem>
                                 <be-navitem>item 3</be-navitem>
                                 <be-navitem disabled="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav&gt;
+    &lt;be-navitem&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
+                            <h4 class="display-4">Justify Center</h4>
                             <be-nav justifycontent="center">
                                 <be-navitem>item 1</be-navitem>
                                 <be-navitem>item 2</be-navitem>
                                 <be-navitem>item 3</be-navitem>
                                 <be-navitem disabled="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav justifycontent=&quot;center&quot;&gt;
+    &lt;be-navitem&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
+                            <h4 class="display-4">Justify End</h4>
                             <be-nav justifycontent="end">
                                 <be-navitem>item 1</be-navitem>
                                 <be-navitem>item 2</be-navitem>
                                 <be-navitem>item 3</be-navitem>
                                 <be-navitem disabled="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav justifycontent=&quot;end&quot;&gt;
+    &lt;be-navitem&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
+                            <h4 class="display-4">Vertical</h4>
                             <be-nav flexcolumn="true">
                                 <be-navitem>item 1</be-navitem>
                                 <be-navitem>item 2</be-navitem>
                                 <be-navitem>item 3</be-navitem>
                                 <be-navitem disabled="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav flexcolumn=&quot;true&quot;&gt;
+    &lt;be-navitem&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
+                            <h4 class="display-4">Tabs</h4>
                             <be-nav tabs="true">
                                 <be-navitem active="true" tab="true">item 1</be-navitem>
                                 <be-navitem tab="true">item 2</be-navitem>
                                 <be-navitem tab="true">item 3</be-navitem>
                                 <be-navitem disabled="true" tab="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav tabs=&quot;true&quot;&gt;
+    &lt;be-navitem active=&quot;true&quot; tab=&quot;true&quot;&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem tab=&quot;true&quot;&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem tab=&quot;true&quot;&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot; tab=&quot;true&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
                             <br>
+                            <h4 class="display-4">Pills</h4>
                             <be-nav pills="true">
                                 <be-navitem active="true" pill="true">item 1</be-navitem>
                                 <be-navitem pill="true">item 2</be-navitem>
                                 <be-navitem pill="true">item 3</be-navitem>
                                 <be-navitem disabled="true" pill="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav pills=&quot;true&quot;&gt;
+    &lt;be-navitem active=&quot;true&quot; tab=&quot;true&quot;&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem tab=&quot;true&quot;&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem tab=&quot;true&quot;&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot; tab=&quot;true&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
                             <br>
+                            <h4 class="display-4">Fill</h4>
                             <be-nav pills="true" fill="true">
                                 <be-navitem active="true" pill="true" fill="true">item 1</be-navitem>
                                 <be-navitem pill="true" fill="true">item 2</be-navitem>
                                 <be-navitem pill="true" fill="true">item 3</be-navitem>
                                 <be-navitem disabled="true" pill="true" fill="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav pills=&quot;true&quot; fill=&quot;true&quot;&gt;
+    &lt;be-navitem active=&quot;true&quot; pill=&quot;true&quot; fill=&quot;true&quot;&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem pill=&quot;true&quot; fill=&quot;true&quot;&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem pill=&quot;true&quot; fill=&quot;true&quot;&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot; pill=&quot;true&quot; fill=&quot;true&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
                             <br>
+                            <h4 class="display-4">Fill and Justify</h4>
                             <be-nav pills="true" fill="true">
                                 <be-navitem active="true" pill="true" fill="true" justified="true">item 1</be-navitem>
                                 <be-navitem pill="true" fill="true" justified="true">item 2</be-navitem>
                                 <be-navitem pill="true" fill="true" justified="true">item 3<br>much longer</be-navitem>
                                 <be-navitem disabled="true" pill="true" fill="true" justified="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav pills=&quot;true&quot; fill=&quot;true&quot;&gt;
+    &lt;be-navitem active=&quot;true&quot; pill=&quot;true&quot; fill=&quot;true&quot; justified=&quot;true&quot;&gt;item
+    1&lt;/be-navitem&gt;
+    &lt;be-navitem pill=&quot;true&quot; fill=&quot;true&quot; justified=&quot;true&quot;&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem pill=&quot;true&quot; fill=&quot;true&quot; justified=&quot;true&quot;&gt;item 3&lt;br&gt;much
+    longer&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot; pill=&quot;true&quot; fill=&quot;true&quot; justified=&quot;true&quot;&gt;item
+    4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
+                            <h4 class="display-4">Tabs with dropdown</h4>
                             <be-nav tabs="true">
                                 <be-navitem active="true" tab="true">item 1</be-navitem>
                                 <be-navitem tab="true">
@@ -687,6 +844,27 @@ Collapsible Group Item #3
                                 <be-navitem tab="true">item 3</be-navitem>
                                 <be-navitem disabled="true" tab="true">item 4</be-navitem>
                             </be-nav>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav tabs=&quot;true&quot;&gt;
+    &lt;be-navitem active=&quot;true&quot; tab=&quot;true&quot;&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem tab=&quot;true&quot;&gt;
+        &lt;be-dropdown&gt;
+            &lt;be-button type=&quot;link&quot; dropdown=&quot;true&quot; nopadding=&quot;true&quot; toggletarget=&quot;dropdownmenu&quot;&gt;item 2&lt;/be-button&gt;
+            &lt;be-dropdownmenu toggleid=&quot;dropdownmenu&quot;&gt;
+                &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;
+                    onclick=&quot;console.log(&apos;link clicked&apos;)&quot;&gt;Action&lt;/a&gt;
+                &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;
+                &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;
+            &lt;/be-dropdownmenu&gt;
+        &lt;/be-dropdown&gt;
+    &lt;/be-navitem&gt;
+    &lt;be-navitem tab=&quot;true&quot;&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot; tab=&quot;true&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+                                </code>
+                            </pre>
+                            <h4 class="display-4">Dynamic Tabs</h4>
                             <be-nav tabs="true">
                                 <be-navitem active="true" tab="true" tagertid="tabpane1">item 1</be-navitem>
                                 <be-navitem tab="true" tagertid="tabpane2">item 2</be-navitem>
@@ -694,10 +872,49 @@ Collapsible Group Item #3
                                 <be-navitem disabled="true" tab="true" tagertid="tabpane4">item 4</be-navitem>
                             </be-nav>
                             <be-tabcontent tabpaneid="tabpane1">
-                                <be-tabpane paneid="tabpane1" show="true">hello world 1</be-tabpane>
-                                <be-tabpane paneid="tabpane2">hello world 2</be-tabpane>
-                                <be-tabpane paneid="tabpane3">hello world 3</be-tabpane>
+                                <be-tabpane paneid="tabpane1" show="true">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Nullam ac orci rhoncus, placerat odio id, sollicitudin erat. Class
+                                    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                                    himenaeos. Phasellus volutpat ipsum massa, in fermentum felis commodo eget. Lorem
+                                    ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate rutrum pretium.
+                                    Phasellus elementum dui eu leo pretium volutpat. Maecenas non posuere lacus. Nullam
+                                    sagittis pulvinar sapien, a aliquam ligula luctus sed. Nam diam ante, aliquet a
+                                    scelerisque vel, pharetra et nisi. Donec sagittis nunc nec velit fringilla
+                                    imperdiet. Aenean suscipit leo sit amet leo tempus gravida.</be-tabpane>
+                                <be-tabpane paneid="tabpane2">In posuere, elit vitae semper scelerisque, lorem ligula
+                                    cursus tellus, non commodo lorem odio quis erat. Proin nec fringilla nulla. Nam in
+                                    eros eu magna vehicula hendrerit eget ac metus. Vestibulum a varius risus. Phasellus
+                                    condimentum felis lectus. Praesent non tincidunt magna. Sed non nulla diam. Praesent
+                                    nec libero ipsum. Quisque eu pellentesque enim, a vestibulum mi. Donec eu mi ut arcu
+                                    facilisis mollis ac quis ligula. Nunc non tellus eget nibh bibendum tempus non vel
+                                    ligula. Proin eros sem, tincidunt tincidunt placerat a, tincidunt non sapien. Proin
+                                    consectetur nisl fermentum ligula iaculis, sit amet suscipit nisi tincidunt.
+                                </be-tabpane>
+                                <be-tabpane paneid="tabpane3">Cras fringilla dapibus quam, eu eleifend ante gravida nec.
+                                    Ut cursus, dui sit amet placerat commodo, mauris nunc porta turpis, vel mattis orci
+                                    turpis eget dolor. Vivamus eleifend, velit vel ullamcorper rhoncus, ligula velit
+                                    euismod nisi, id suscipit diam lectus vitae arcu. Pellentesque vitae neque in lorem
+                                    convallis lobortis. Duis vel metus velit. Pellentesque habitant morbi tristique
+                                    senectus et netus et malesuada fames ac turpis egestas. Vivamus at augue
+                                    scelerisque, finibus mauris tincidunt, accumsan nisl. Vestibulum blandit urna sed
+                                    porta rutrum. Vestibulum porta, felis sed sodales rhoncus, orci lacus tincidunt
+                                    diam, sed cursus lorem diam id est.</be-tabpane>
                             </be-tabcontent>
+                            <pre class="language-html">
+                                <code>
+&lt;be-nav tabs=&quot;true&quot;&gt;
+    &lt;be-navitem active=&quot;true&quot; tab=&quot;true&quot; tagertid=&quot;tabpane1&quot;&gt;item 1&lt;/be-navitem&gt;
+    &lt;be-navitem tab=&quot;true&quot; tagertid=&quot;tabpane2&quot;&gt;item 2&lt;/be-navitem&gt;
+    &lt;be-navitem tab=&quot;true&quot; tagertid=&quot;tabpane3&quot;&gt;item 3&lt;/be-navitem&gt;
+    &lt;be-navitem disabled=&quot;true&quot; tab=&quot;true&quot; tagertid=&quot;tabpane4&quot;&gt;item 4&lt;/be-navitem&gt;
+&lt;/be-nav&gt;
+&lt;be-tabcontent tabpaneid=&quot;tabpane1&quot;&gt;
+    &lt;be-tabpane paneid=&quot;tabpane1&quot; show=&quot;true&quot;&gt;hello world 1&lt;/be-tabpane&gt;
+    &lt;be-tabpane paneid=&quot;tabpane2&quot;&gt;hello world 2&lt;/be-tabpane&gt;
+    &lt;be-tabpane paneid=&quot;tabpane3&quot;&gt;hello world 3&lt;/be-tabpane&gt;
+&lt;/be-tabcontent&gt;
+                                </code>
+                            </pre>
                         </section>
                         <section id="toast-section">
                             <h3 class="h3">Toast</h3>

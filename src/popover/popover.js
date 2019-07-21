@@ -1,6 +1,6 @@
 const BootstrapElementsPopover = {
     init(){
-        window.addEventListener('DOMContentLoaded', this.onLoad.bind(this))
+        window.addEventListener('DOMContentLoaded', this.onLoad.bind(this));
     },
     onLoad(){
         BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this), this);

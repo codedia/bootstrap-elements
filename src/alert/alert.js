@@ -37,13 +37,13 @@ class BootstrapElementsAlert extends HTMLElement {
             div.className = `
                 alert fade show
                 ${this.type ? ` alert-${this.type}`: ''} 
-                ${this.dismissible === 'true' ? ` alert-dismissible`: ''} 
+                ${this.dismissible === 'true' ? ' alert-dismissible': ''} 
             `;
 
             if (this.dismissible === 'true') {
-                div.querySelector('button').classList.remove('hide')
+                div.querySelector('button').classList.remove('hide');
             }else{
-                div.querySelector('button').classList.add('hide')
+                div.querySelector('button').classList.add('hide');
             }
 
         }
@@ -56,7 +56,7 @@ class BootstrapElementsAlert extends HTMLElement {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        `
+        `;
     }
 }
 customElements.define('be-alert', BootstrapElementsAlert);

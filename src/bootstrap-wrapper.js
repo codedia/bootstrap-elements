@@ -12,7 +12,7 @@ class BootstrapWrapper extends HTMLElement {
         this.element.innerHTML = this.getTemplate();
     }
     getTemplate() {
-        return `<slot/>`;
+        return '<slot/>';
     }
 }
 customElements.define('be-wrapper', BootstrapWrapper);

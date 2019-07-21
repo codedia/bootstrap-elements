@@ -28,7 +28,7 @@ class BootstrapElementsDropdown extends HTMLElement {
             <div class="dropdown">
                 <slot/>
             </div>
-        `
+        `;
     }
 }
 customElements.define('be-dropdown', BootstrapElementsDropdown);

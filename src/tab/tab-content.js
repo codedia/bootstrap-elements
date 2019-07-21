@@ -68,7 +68,7 @@ class BootstrapElementsTabContent extends HTMLElement {
     getTemplate() {
         return `
                 <slot></slot>
-        `
+        `;
     }
 }
 customElements.define('be-tabcontent', BootstrapElementsTabContent);

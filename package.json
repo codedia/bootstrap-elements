@@ -1,12 +1,18 @@
 {
   "name": "bootstrap-elements",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "bootstrap elements is a custom elements wrapper for bootstrap",
   "main": "index.js",
   "scripts": {
     "clean:dist": "cleandir \"dist\"",
-    "build:bundle": "node fuse",
-    "build": "run-s clean:dist sass build:bundle ",
+    "clean:site": "cleandir \"site\"",
+    "build": "run-s clean:dist version:src copy:* bundle:* version:dist ",
+    "deploy": "run-s clean:site build deploy:copy",
+    "deploy:copy": "copyfiles -u 1 dist/**/* example/**/*  site",
+    "lint": "eslint src/**/*.js",
+    "minifiy": "minify dist/bootstrap-elements.js",
+    "version:src": "node util/version.js",
+    "version:dist": "node util/version.js --dist",
     "serve": "browser-sync start -s \"example\" -f \"example\" --ss \"dist\"",
     "reload": "browser-sync reload",
     "sass": "node-sass style/main.scss dist/css/style.css",
@@ -32,21 +38,21 @@
   },
   "homepage": "https://github.com/codedia/bootstrap-elements#readme",
   "dependencies": {
-    "@turtlemay/jsx-dom": "^0.5.4",
     "bootstrap": "4.3.1",
-    "concat": "^1.0.3",
-    "concat-glob-cli": "^0.1.0",
-    "copyfiles": "^2.1.1",
     "jquery": "^3.4.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "browser-sync": "^2.26.7",
-    "clean-dir": "^1.0.3",
-    "node-sass": "^4.11.0",
-    "typescript": "^3.5.2",
-    "npm-run-all": "^4.1.5",
-    "onchange": "^5.2.0",
     "browserify": "^16.2.3",
-    "fuse-box": "^3.7.1"
+    "clean-dir": "^1.0.3",
+    "concat": "^1.0.3",
+    "concat-glob-cli": "^0.1.0",
+    "copyfiles": "^2.1.1",
+    "eslint": "^6.1.0",
+    "minify": "^4.1.3",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0"
   }
 }

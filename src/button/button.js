@@ -73,11 +73,11 @@ class BootstrapElementsButton extends HTMLElement {
                 btn ${this.type !== '' ? ` btn-${this.type}` : ''}
                 ${this.close === 'true' ? ' close' : ''}
                 ${this.size ? ` btn-${this.size}`: ''}
-                ${this.block === 'true' ? ` btn-block`: ''} 
-                ${this.link === 'true' ? ` btn-link`: ''} 
-                ${this.toggle || this.active === 'true' ? ` active`: ''} 
-                ${this.dropdown || this.dropdown === 'true' ? ` dropdown-toggle`: ''} 
-                ${this.nopadding || this.nopadding === 'true' ? ` padding-0`: ''} 
+                ${this.block === 'true' ? ' btn-block': ''} 
+                ${this.link === 'true' ? ' btn-link': ''} 
+                ${this.toggle || this.active === 'true' ? ' active': ''} 
+                ${this.dropdown || this.dropdown === 'true' ? ' dropdown-toggle': ''} 
+                ${this.nopadding || this.nopadding === 'true' ? ' padding-0': ''} 
             `;
 
             button.disabled = this.isDisabled();
@@ -103,12 +103,12 @@ class BootstrapElementsButton extends HTMLElement {
         }
     }
     isDisabled(){
-        return this.hasAttribute('disabled') && this.disabled !== "false";
+        return this.hasAttribute('disabled') && this.disabled !== 'false';
     }
     getTemplate() {
         return `
             <button class="btn btn-${this.type}"><slot/></button>
-        `
+        `;
     }
 }
 customElements.define('be-button', BootstrapElementsButton);

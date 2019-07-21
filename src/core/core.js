@@ -48,5 +48,5 @@ const BootstrapElementsCore = {
             }
         );
     }
-}
+};
 BootstrapElementsCore.init();

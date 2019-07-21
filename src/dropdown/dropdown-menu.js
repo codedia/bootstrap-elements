@@ -52,7 +52,7 @@ class BootstrapElementsDropdownMenu extends HTMLElement {
             <div class="dropdown-menu" toggleid="dropdownmenu">
                 <slot/>
             </div>
-        `
+        `;
     }
 }
 customElements.define('be-dropdownmenu', BootstrapElementsDropdownMenu);

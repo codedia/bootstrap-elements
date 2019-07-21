@@ -34,7 +34,7 @@ class BootstrapElementsTooltip extends HTMLElement {
                  container: 'body',
                  title: this.title,
                  placement: this.placement ? this.placement : null,
-             }
+             };
              if (this.trigger) options.trigger = this.trigger;
              if (this.template) options.template = this.template;
              $(this.childElement).tooltip(options);

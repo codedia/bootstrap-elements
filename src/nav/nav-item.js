@@ -67,25 +67,25 @@ class BootstrapElementsNavItem extends HTMLElement {
     update() {
         this.element.className = ` 
             nav-item
-            ${this.tab === 'true' ? ` tab-item`: ''} 
-            ${this.pill === 'true' ? ` pill-item`: ''} 
-            ${this.fill === 'true' ? ` nav-item-fill`: ''} 
-            ${this.justified === 'true' ? ` nav-item-justified`: ''} 
+            ${this.tab === 'true' ? ' tab-item': ''} 
+            ${this.pill === 'true' ? ' pill-item': ''} 
+            ${this.fill === 'true' ? ' nav-item-fill': ''} 
+            ${this.justified === 'true' ? ' nav-item-justified': ''} 
             `;
             const aTag = this.element.querySelector('a');
             if (aTag) {
                 aTag.className = `
                 nav-link
-                ${this.active === 'true' ? ` active`: ''} 
-                ${this.disabled === 'true' ? ` disabled`: ''} 
-                ${this.justified === 'true' ? ` nav-item-justified`: ''} 
+                ${this.active === 'true' ? ' active': ''} 
+                ${this.disabled === 'true' ? ' disabled': ''} 
+                ${this.justified === 'true' ? ' nav-item-justified': ''} 
         `;
         }
     }
     getTemplate() {
         return `
                 <a class="nav-link" href="#"><slot/></a>
-        `
+        `;
     }
 }
 customElements.define('be-navitem', BootstrapElementsNavItem);

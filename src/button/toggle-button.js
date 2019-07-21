@@ -25,8 +25,8 @@ class BootstrapElementsToggleButton extends HTMLButtonElement {
             this.className = `
                 btn btn-${this.type}
                 ${this.size ? ` btn-${this.size}`: ''}
-                ${this.block === 'true' ? ` btn-block`: ''} 
-                ${this.toggle || this.active === 'true' ? ` active`: ''} 
+                ${this.block === 'true' ? ' btn-block': ''} 
+                ${this.toggle || this.active === 'true' ? ' active': ''} 
             `;
 
     }
@@ -39,12 +39,12 @@ class BootstrapElementsToggleButton extends HTMLButtonElement {
         }
     }
     isDisabled() {
-        return this.hasAttribute('disabled') && this.disabled !== "false";
+        return this.hasAttribute('disabled') && this.disabled !== 'false';
     }
     getTemplate() {
         return `
             <button class="btn btn-${this.type}"><slot/></button>
-        `
+        `;
     }
 }
 customElements.define('be-togglebutton', BootstrapElementsToggleButton, {

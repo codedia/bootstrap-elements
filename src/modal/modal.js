@@ -42,7 +42,7 @@ class BootstrapElementsModal extends HTMLElement {
             <div class="modal" tabindex="-1" role="dialog">
                 <slot/>
             </div>
-        `
+        `;
     }
 }
 customElements.define('be-modal', BootstrapElementsModal);

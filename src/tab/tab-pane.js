@@ -33,15 +33,15 @@ class BootstrapElementsTabPane extends HTMLElement {
     update() {
             this.element.className = `
                 tab-pane
-                ${this.show === 'true' || this.isActive ? ` show`: ' hide'} 
-                ${this.active === 'true' ? ` active`: ''} 
-                ${this.fade === 'true' ? ` fade`: ''} 
+                ${this.show === 'true' || this.isActive ? ' show': ' hide'} 
+                ${this.active === 'true' ? ' active': ''} 
+                ${this.fade === 'true' ? ' fade': ''} 
             `;
     }
     getTemplate() {
         return `
                 <slot></slot>
-        `
+        `;
     }
 }
 customElements.define('be-tabpane', BootstrapElementsTabPane);

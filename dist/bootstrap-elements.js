@@ -1,3 +1,4 @@
+/** Boostrap Elements version v0.1.0 */ 
 class BootstrapElementsAlert extends HTMLElement {
     static get observedAttributes() {
         return ['dismissible', 'type'];
@@ -37,13 +38,13 @@ class BootstrapElementsAlert extends HTMLElement {
             div.className = `
                 alert fade show
                 ${this.type ? ` alert-${this.type}`: ''} 
-                ${this.dismissible === 'true' ? ` alert-dismissible`: ''} 
+                ${this.dismissible === 'true' ? ' alert-dismissible': ''} 
             `;
 
             if (this.dismissible === 'true') {
-                div.querySelector('button').classList.remove('hide')
+                div.querySelector('button').classList.remove('hide');
             }else{
-                div.querySelector('button').classList.add('hide')
+                div.querySelector('button').classList.add('hide');
             }
 
         }
@@ -56,7 +57,7 @@ class BootstrapElementsAlert extends HTMLElement {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        `
+        `;
     }
 }
 customElements.define('be-alert', BootstrapElementsAlert);
@@ -76,7 +77,7 @@ class BootstrapWrapper extends HTMLElement {
         this.element.innerHTML = this.getTemplate();
     }
     getTemplate() {
-        return `<slot/>`;
+        return '<slot/>';
     }
 }
 customElements.define('be-wrapper', BootstrapWrapper);
@@ -3617,7 +3618,7 @@ customElements.define('be-wrapper', BootstrapWrapper);
      * @inner
      */
     shift: {
-      /** @prop {number} order=100 - Index used to define the order of execution */
+      
       order: 100,
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
@@ -7117,12 +7118,12 @@ class BootstrapElementsButtonGroup extends HTMLElement {
         this.update();
     }
     update(){
-        this.element.className = `btn-group btn-group-toggle`;
+        this.element.className = 'btn-group btn-group-toggle';
     }
     getTemplate() {
         return `
             <slot/>
-        `
+        `;
     }
 }
 customElements.define('be-buttongroup', BootstrapElementsButtonGroup);
@@ -7201,11 +7202,11 @@ class BootstrapElementsButton extends HTMLElement {
                 btn ${this.type !== '' ? ` btn-${this.type}` : ''}
                 ${this.close === 'true' ? ' close' : ''}
                 ${this.size ? ` btn-${this.size}`: ''}
-                ${this.block === 'true' ? ` btn-block`: ''} 
-                ${this.link === 'true' ? ` btn-link`: ''} 
-                ${this.toggle || this.active === 'true' ? ` active`: ''} 
-                ${this.dropdown || this.dropdown === 'true' ? ` dropdown-toggle`: ''} 
-                ${this.nopadding || this.nopadding === 'true' ? ` padding-0`: ''} 
+                ${this.block === 'true' ? ' btn-block': ''} 
+                ${this.link === 'true' ? ' btn-link': ''} 
+                ${this.toggle || this.active === 'true' ? ' active': ''} 
+                ${this.dropdown || this.dropdown === 'true' ? ' dropdown-toggle': ''} 
+                ${this.nopadding || this.nopadding === 'true' ? ' padding-0': ''} 
             `;
 
             button.disabled = this.isDisabled();
@@ -7231,12 +7232,12 @@ class BootstrapElementsButton extends HTMLElement {
         }
     }
     isDisabled(){
-        return this.hasAttribute('disabled') && this.disabled !== "false";
+        return this.hasAttribute('disabled') && this.disabled !== 'false';
     }
     getTemplate() {
         return `
             <button class="btn btn-${this.type}"><slot/></button>
-        `
+        `;
     }
 }
 customElements.define('be-button', BootstrapElementsButton);
@@ -7267,8 +7268,8 @@ class BootstrapElementsToggleButton extends HTMLButtonElement {
             this.className = `
                 btn btn-${this.type}
                 ${this.size ? ` btn-${this.size}`: ''}
-                ${this.block === 'true' ? ` btn-block`: ''} 
-                ${this.toggle || this.active === 'true' ? ` active`: ''} 
+                ${this.block === 'true' ? ' btn-block': ''} 
+                ${this.toggle || this.active === 'true' ? ' active': ''} 
             `;
 
     }
@@ -7281,12 +7282,12 @@ class BootstrapElementsToggleButton extends HTMLButtonElement {
         }
     }
     isDisabled() {
-        return this.hasAttribute('disabled') && this.disabled !== "false";
+        return this.hasAttribute('disabled') && this.disabled !== 'false';
     }
     getTemplate() {
         return `
             <button class="btn btn-${this.type}"><slot/></button>
-        `
+        `;
     }
 }
 customElements.define('be-togglebutton', BootstrapElementsToggleButton, {
@@ -7413,7 +7414,7 @@ const BootstrapElementsCore = {
             }
         );
     }
-}
+};
 BootstrapElementsCore.init();
 const CoreStyle = `
     .disabled-events {
@@ -7505,7 +7506,7 @@ class BootstrapElementsDropdownMenu extends HTMLElement {
             <div class="dropdown-menu" toggleid="dropdownmenu">
                 <slot/>
             </div>
-        `
+        `;
     }
 }
 customElements.define('be-dropdownmenu', BootstrapElementsDropdownMenu);
@@ -7539,7 +7540,7 @@ class BootstrapElementsDropdown extends HTMLElement {
             <div class="dropdown">
                 <slot/>
             </div>
-        `
+        `;
     }
 }
 customElements.define('be-dropdown', BootstrapElementsDropdown);
@@ -7587,7 +7588,7 @@ class BootstrapElementsModal extends HTMLElement {
             <div class="modal" tabindex="-1" role="dialog">
                 <slot/>
             </div>
-        `
+        `;
     }
 }
 customElements.define('be-modal', BootstrapElementsModal);
@@ -7660,25 +7661,25 @@ class BootstrapElementsNavItem extends HTMLElement {
     update() {
         this.element.className = ` 
             nav-item
-            ${this.tab === 'true' ? ` tab-item`: ''} 
-            ${this.pill === 'true' ? ` pill-item`: ''} 
-            ${this.fill === 'true' ? ` nav-item-fill`: ''} 
-            ${this.justified === 'true' ? ` nav-item-justified`: ''} 
+            ${this.tab === 'true' ? ' tab-item': ''} 
+            ${this.pill === 'true' ? ' pill-item': ''} 
+            ${this.fill === 'true' ? ' nav-item-fill': ''} 
+            ${this.justified === 'true' ? ' nav-item-justified': ''} 
             `;
             const aTag = this.element.querySelector('a');
             if (aTag) {
                 aTag.className = `
                 nav-link
-                ${this.active === 'true' ? ` active`: ''} 
-                ${this.disabled === 'true' ? ` disabled`: ''} 
-                ${this.justified === 'true' ? ` nav-item-justified`: ''} 
+                ${this.active === 'true' ? ' active': ''} 
+                ${this.disabled === 'true' ? ' disabled': ''} 
+                ${this.justified === 'true' ? ' nav-item-justified': ''} 
         `;
         }
     }
     getTemplate() {
         return `
                 <a class="nav-link" href="#"><slot/></a>
-        `
+        `;
     }
 }
 customElements.define('be-navitem', BootstrapElementsNavItem);
@@ -7721,23 +7722,23 @@ class BootstrapElementsNav extends HTMLElement {
             this.element.className = `
                 nav
                 ${this.justifycontent ? ` justify-content-${this.justifycontent}` : ''}
-                ${this.flexcolumn === 'true' ? ` flex-column` : ''}
-                ${this.tabs === 'true' ? ` nav-tabs` : ''}
-                ${this.pills === 'true' ? ` nav-pills` : ''}
-                ${this.fill === 'true' ? ` nav-fill` : ''}
+                ${this.flexcolumn === 'true' ? ' flex-column' : ''}
+                ${this.tabs === 'true' ? ' nav-tabs' : ''}
+                ${this.pills === 'true' ? ' nav-pills' : ''}
+                ${this.fill === 'true' ? ' nav-fill' : ''}
             `;
 
         }
     }
     getTemplate() {
         return `<slot/>
-        `
+        `;
     }
 }
 customElements.define('be-nav', BootstrapElementsNav);
 const BootstrapElementsPopover = {
     init(){
-        window.addEventListener('DOMContentLoaded', this.onLoad.bind(this))
+        window.addEventListener('DOMContentLoaded', this.onLoad.bind(this));
     },
     onLoad(){
         BootstrapElementsCore.subscribe(BootstrapElementsCore.EVENTS.BOOTSTRAP_ELEMENTS_TOGGLE, this.onToggle.bind(this), this);
@@ -7852,7 +7853,7 @@ class BootstrapElementsTabContent extends HTMLElement {
     getTemplate() {
         return `
                 <slot></slot>
-        `
+        `;
     }
 }
 customElements.define('be-tabcontent', BootstrapElementsTabContent);
@@ -7891,15 +7892,15 @@ class BootstrapElementsTabPane extends HTMLElement {
     update() {
             this.element.className = `
                 tab-pane
-                ${this.show === 'true' || this.isActive ? ` show`: ' hide'} 
-                ${this.active === 'true' ? ` active`: ''} 
-                ${this.fade === 'true' ? ` fade`: ''} 
+                ${this.show === 'true' || this.isActive ? ' show': ' hide'} 
+                ${this.active === 'true' ? ' active': ''} 
+                ${this.fade === 'true' ? ' fade': ''} 
             `;
     }
     getTemplate() {
         return `
                 <slot></slot>
-        `
+        `;
     }
 }
 customElements.define('be-tabpane', BootstrapElementsTabPane);
@@ -7951,7 +7952,7 @@ class BootstrapElementsToast extends HTMLElement {
     update() {
          this.element.className = ` 
             toast
-            ${this.show === 'true' ? ` show`: ''} 
+            ${this.show === 'true' ? ' show': ''} 
             `;
     }
     addListeners() {
@@ -7994,7 +7995,7 @@ class BootstrapElementsTooltip extends HTMLElement {
                  container: 'body',
                  title: this.title,
                  placement: this.placement ? this.placement : null,
-             }
+             };
              if (this.trigger) options.trigger = this.trigger;
              if (this.template) options.template = this.template;
              $(this.childElement).tooltip(options);
@@ -8029,4 +8030,7 @@ const CustomElementHelper = {
             });
         }  
     }
+};
+if(window) {
+    window.BootstrapElementsVersion = '0.1.0';
 }
