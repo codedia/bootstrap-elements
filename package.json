@@ -32,7 +32,7 @@
     "type": "git",
     "url": "git+https://github.com/codedia/bootstrap-elements.git"
   },
-  "author": "",
+  "author": "Fahim Chowdhury <fahim.chowdhury1985@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/codedia/bootstrap-elements/issues"
