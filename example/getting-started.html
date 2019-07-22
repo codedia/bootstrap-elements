@@ -44,15 +44,21 @@
                             <p class="lead">
                                 Bootstrap Elements Leverages Bootstrap's CSS and JS to provide a native bootstrap experience.  
                             </p>
+                            <h4 class="display-4">Installation</h4>
+                            <p>You can install bootstrap elements via npm</p>
+                            <pre class="language-clike"><code>npm i bootstrap-elements</code></pre>
                             <h4 class="display-4">JS</h4>
                             <p>Bootstrap Elements is a single js file which bundles Bootstrap js, css and Bootstrap Elements code</p>
                             <p>You might be wondering why the css is bundled? This is so that the css can be available within the shadow DOM. The CSS is converted to JS and then a style tag is adopted by the custom elements.</p>
                             <p>You can provide your own css. Please see the guide below.</p>
                             <pre class="language-html">
                                 <code>
+&lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;bootstrap-elements.js&quot;&gt;&lt;/script&gt;
                                 </code>
                             </pre>
+                            <p>Bootstrap elements is bundled with Bootstrap bundle which includes popper.js</p>
+                            <p>JQuery is required as Bootstrap requires it.</p>
                             <h3 class="display-4">Custom Bootstrap CSS</h4>
                             <p>If you want to provide your own css you can pass it via a variable on the window.</p>
                             <pre class="language-html">
@@ -60,9 +66,9 @@
 &lt;script&gt;
     window.CustomBootstrapCSS = "body { background-color:red }";
 &lt;/script&gt;
+&lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;bootstrap-elements.js&quot;&gt;&lt;/script&gt;
-                                </code>
-                            </pre>
+                                </code></pre>
                         </div>
                     </div>
     </div>

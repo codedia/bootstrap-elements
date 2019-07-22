@@ -1,4 +1,3 @@
-/** Boostrap Elements version v0.1.0 */ 
 class BootstrapElementsAlert extends HTMLElement {
     static get observedAttributes() {
         return ['dismissible', 'type'];
@@ -3618,7 +3617,7 @@ customElements.define('be-wrapper', BootstrapWrapper);
      * @inner
      */
     shift: {
-      
+      /** @prop {number} order=100 - Index used to define the order of execution */
       order: 100,
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,

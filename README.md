@@ -10,8 +10,31 @@ Custom Element wrappers for Bootstrap 4 components
 <p align="center">  
 documentation available at<br>
 <a href="https://bootstrap-elements.netlify.com">bootstrap-elements site</a>
-</p>
+</p>  
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square)](https://www.webcomponents.org/element/owner/my-element)
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="https://bootstrap-elements.netlify.com/jquery.min.js"></script>
+    <script src="https://bootstrap-elements.netlify.com/bootstrap-elements.js"></script>
+    <be-button type="primary">primary</be-button>
+    <be-button type="secondary">secondary</be-button>
+    <be-button type="success">success</be-button>
+    <be-button type="danger">danger</be-button>
+    <be-button type="warning">warning</be-button>
+  </template>
+</custom-element-demo>
+```
+-->
+
+## Install
+
+```
+npm i bootstrap-elements
+```
 
 ## Include Files
  Bootstrap Elements is a single js file which bundles Bootstrap js, css and Bootstrap Elements code
@@ -21,6 +44,7 @@ You might be wondering why the css is bundled? This is so that the css can be av
 You can provide your own css. Please see the guide below.
 
 ```html
+<script src="jquery.min.js"></script>
 <script src="bootstrap-elements.js"></script>
 ```
 ### Custom Bootstrap CSS

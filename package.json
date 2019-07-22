@@ -2,6 +2,7 @@
   "name": "bootstrap-elements",
   "version": "0.1.0",
   "description": "bootstrap elements is a custom elements wrapper for bootstrap",
+  "keywords": ["bootstrap", "custom elements", "web components", "bootstrap elements"],
   "main": "index.js",
   "scripts": {
     "clean:dist": "cleandir \"dist\"",
