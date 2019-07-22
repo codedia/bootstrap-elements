@@ -12,7 +12,7 @@ documentation available at<br>
 <a href="https://bootstrap-elements.netlify.com">bootstrap-elements site</a>
 </p>  
 
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square)](https://www.webcomponents.org/element/owner/my-element)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square)](https://www.webcomponents.org/element/bootstrap-elements)
 
 <!--
 ```
