@@ -11,8 +11,10 @@ Custom Element wrappers for Bootstrap 4 components
 documentation available at<br>
 <a href="https://bootstrap-elements.netlify.com">bootstrap-elements site</a>
 </p>  
-
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square)](https://www.webcomponents.org/element/bootstrap-elements)
+<p align="center">
+<a href="https://www.npmjs.com/package/bootstrap-elements"><img src="https://badge.fury.io/js/bootstrap-elements.svg"></a>
+<a href="https://www.webcomponents.org/element/bootstrap-elements"><img src="https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square"></a>
+</p>
 
 <!--
 ```
